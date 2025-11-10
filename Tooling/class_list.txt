@@ -1,2 +1,5 @@
 gp_Pnt.hxx
 gp_Lin.hxx
+
+gp_XYZ.hxx
+gp_Ax1.hxx

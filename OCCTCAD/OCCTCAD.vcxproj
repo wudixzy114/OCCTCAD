@@ -137,6 +137,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="RTTR_Registration.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ReflectionAccessor.h" />
