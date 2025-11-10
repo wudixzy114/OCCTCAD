@@ -7441,9 +7441,9 @@
     <Argument type="_4604"/>
     <Argument type="_4604"/>
   </Function>
-  <Class id="_2069" name="gp_Pnt" context="_1" location="f69:34" file="f69" line="34" members="_5189 _5190 _5191 _5192 _5193 _5194 _5195 _5196 _5197 _5198 _5199 _5200 _5201 _5202 _5203 _5204 _5205 _5206 _5207 _5208 _5209 _5210 _5211 _5212 _5213 _5214 _5215 _5216 _5217 _5218 _5219 _5220 _5221 _5222 _5223 _5224 _5225 _5226 _5227 _5228 _5229 _5230 _5231 _5232 _5233 _5234 _5235 _5236 _5237" befriending="_2098" size="192" align="64"/>
+  <Class id="_2069" name="gp_Pnt" context="_1" location="f69:34" file="f69" line="34" members="_5189 _5190 _5191 _5192 _5193 _5194 _5195 _5196 _5197 _5198 _5199 _5200 _5201 _5202 _5203 _5204 _5205 _5206 _5207 _5208 _5209 _5210 _5211 _5212 _5213 _5214 _5215 _5216 _5217 _5218 _5219 _5220 _5221 _5222 _5223 _5224 _5225 _5226 _5227 _5228 _5229 _5230 _5231 _5232 _5233 _5234 _5235 _5236 _5237" befriending="_2096" size="192" align="64"/>
   <Class id="_2070" name="gp_Dir" context="_1" location="f70:35" file="f70" line="35" members="_5238 _5239 _5240 _5241 _5242 _5243 _5244 _5245 _5246 _5247 _5248 _5249 _5250 _5251 _5252 _5253 _5254 _5255 _5256 _5257 _5258 _5259 _5260 _5261 _5262 _5263 _5264 _5265 _5266 _5267 _5268 _5269 _5270 _5271 _5272 _5273 _5274 _5275 _5276 _5277 _5278 _5279 _5280 _5281 _5282 _5283 _5284 _5285 _5286 _5287 _5288 _5289 _5290 _5291 _5292 _5293" size="192" align="64"/>
-  <Class id="_2071" name="gp_Ax1" context="_1" location="f71:37" file="f71" line="37" members="_5294 _5295 _5296 _5297 _5298 _5299 _5300 _5301 _5302 _5303 _5304 _5305 _5306 _5307 _5308 _5309 _5310 _5311 _5312 _5313 _5314 _5315 _5316 _5317 _5318 _5319 _5320 _5321 _5322 _5323 _5324 _5325 _5326 _5327 _5328 _5329 _5330 _5331 _5332 _5333 _5334 _5335" size="384" align="64"/>
+  <Class id="_2071" name="gp_Ax1" context="_1" location="f71:40" file="f71" line="40" members="_5294 _5295 _5296 _5297 _5298 _5299 _5300 _5301 _5302 _5303 _5304 _5305 _5306 _5307 _5308 _5309 _5310 _5311 _5312 _5313 _5314 _5315 _5316 _5317 _5318 _5319 _5320 _5321 _5322 _5323 _5324 _5325 _5326 _5327 _5328 _5329 _5330 _5331 _5332 _5333 _5334 _5335" befriending="_2096" size="384" align="64"/>
   <Class id="_2072" name="gp_Ax2" context="_1" location="f72:53" file="f72" line="53" members="_5336 _5337 _5338 _5339 _5340 _5341 _5342 _5343 _5344 _5345 _5346 _5347 _5348 _5349 _5350 _5351 _5352 _5353 _5354 _5355 _5356 _5357 _5358 _5359 _5360 _5361 _5362 _5363 _5364 _5365 _5366 _5367 _5368 _5369 _5370 _5371 _5372 _5373 _5374 _5375 _5376 _5377 _5378 _5379 _5380 _5381" size="768" align="64"/>
   <Class id="_2073" name="gp_Pnt2d" context="_1" location="f73:31" file="f73" line="31" members="_5382 _5383 _5384 _5385 _5386 _5387 _5388 _5389 _5390 _5391 _5392 _5393 _5394 _5395 _5396 _5397 _5398 _5399 _5400 _5401 _5402 _5403 _5404 _5405 _5406 _5407 _5408 _5409 _5410 _5411 _5412 _5413 _5414 _5415 _5416 _5417 _5418 _5419 _5420 _5421 _5422 _5423 _5424" size="128" align="64"/>
   <Class id="_2074" name="gp_Dir2d" context="_1" location="f74:35" file="f74" line="35" members="_5425 _5426 _5427 _5428 _5429 _5430 _5431 _5432 _5433 _5434 _5435 _5436 _5437 _5438 _5439 _5440 _5441 _5442 _5443 _5444 _5445 _5446 _5447 _5448 _5449 _5450 _5451 _5452 _5453 _5454 _5455 _5456 _5457 _5458 _5459 _5460 _5461 _5462 _5463 _5464 _5465 _5466 _5467 _5468 _5469" size="128" align="64"/>
@@ -7484,21 +7484,21 @@
     <Base type="_2085" access="public" virtual="0" offset="0"/>
   </Class>
   <Typedef id="_2092" name="Handle_Standard_ConstructionError" type="_4588" context="_1" location="f83:26" file="f83" line="26" attributes="deprecated"/>
-  <Class id="_2093" name="gp_XYZ" context="_1" location="f84:31" file="f84" line="31" members="_5628 _5629 _5630 _5631 _5632 _5633 _5634 _5635 _5636 _5637 _5638 _5639 _5640 _5641 _5642 _5643 _5644 _5645 _5646 _5647 _5648 _5649 _5650 _5651 _5652 _5653 _5654 _5655 _5656 _5657 _5658 _5659 _5660 _5661 _5662 _5663 _5664 _5665 _5666 _5667 _5668 _5669 _5670 _5671 _5672 _5673 _5674 _5675 _5676 _5677 _5678 _5679 _5680 _5681 _5682 _5683 _5684 _5685 _5686 _5687 _5688 _5689 _5690 _5691 _5692 _5693 _5694 _5695 _5696 _5697 _5698 _5699 _5700 _5701 _5702 _5703" size="192" align="64"/>
+  <Class id="_2093" name="gp_XYZ" context="_1" location="f84:34" file="f84" line="34" members="_5628 _5629 _5630 _5631 _5632 _5633 _5634 _5635 _5636 _5637 _5638 _5639 _5640 _5641 _5642 _5643 _5644 _5645 _5646 _5647 _5648 _5649 _5650 _5651 _5652 _5653 _5654 _5655 _5656 _5657 _5658 _5659 _5660 _5661 _5662 _5663 _5664 _5665 _5666 _5667 _5668 _5669 _5670 _5671 _5672 _5673 _5674 _5675 _5676 _5677 _5678 _5679 _5680 _5681 _5682 _5683 _5684 _5685 _5686 _5687 _5688 _5689 _5690 _5691 _5692 _5693 _5694 _5695 _5696 _5697 _5698 _5699 _5700 _5701 _5702 _5703" befriending="_2096" size="192" align="64"/>
   <Class id="_2094" name="gp_Mat" context="_1" location="f85:27" file="f85" line="27" members="_5704 _5705 _5706 _5707 _5708 _5709 _5710 _5711 _5712 _5713 _5714 _5715 _5716 _5717 _5718 _5719 _5720 _5721 _5722 _5723 _5724 _5725 _5726 _5727 _5728 _5729 _5730 _5731 _5732 _5733 _5734 _5735 _5736 _5737 _5738 _5739 _5740 _5741 _5742 _5743 _5744 _5745 _5746 _5747 _5748 _5749 _5750 _5751 _5752 _5753 _5754 _5755 _5756 _5757 _5758 _5759 _5760 _5761 _5762 _5763 _5764" befriending="_5765 _2099 _2093" size="576" align="64"/>
   <OperatorFunction id="_2095" name="*" returns="_2094" context="_1" location="f85:592" file="f85" line="592" inline="1" mangled="_ZmldRK6gp_Mat">
     <Argument name="theScalar" type="_173c" location="f85:592" file="f85" line="592"/>
     <Argument name="theMat3D" type="_5766" location="f85:592" file="f85" line="592"/>
   </OperatorFunction>
-  <OperatorFunction id="_2096" name="*" returns="_2093" context="_1" location="f84:576" file="f84" line="576" inline="1" mangled="_ZmlRK6gp_MatRK6gp_XYZ">
-    <Argument name="theMatrix" type="_5766" location="f84:576" file="f84" line="576"/>
-    <Argument name="theCoord1" type="_5767" location="f84:576" file="f84" line="576"/>
+  <Class id="_2096" name="ReflectionAccessor" context="_1" location="f84:25" file="f84" line="25" incomplete="1"/>
+  <OperatorFunction id="_2097" name="*" returns="_2093" context="_1" location="f84:582" file="f84" line="582" inline="1" mangled="_ZmlRK6gp_MatRK6gp_XYZ">
+    <Argument name="theMatrix" type="_5766" location="f84:582" file="f84" line="582"/>
+    <Argument name="theCoord1" type="_5767" location="f84:582" file="f84" line="582"/>
   </OperatorFunction>
-  <OperatorFunction id="_2097" name="*" returns="_2093" context="_1" location="f84:585" file="f84" line="585" inline="1" mangled="_ZmldRK6gp_XYZ">
-    <Argument name="theScalar" type="_173c" location="f84:585" file="f84" line="585"/>
-    <Argument name="theCoord1" type="_5767" location="f84:585" file="f84" line="585"/>
+  <OperatorFunction id="_2098" name="*" returns="_2093" context="_1" location="f84:591" file="f84" line="591" inline="1" mangled="_ZmldRK6gp_XYZ">
+    <Argument name="theScalar" type="_173c" location="f84:591" file="f84" line="591"/>
+    <Argument name="theCoord1" type="_5767" location="f84:591" file="f84" line="591"/>
   </OperatorFunction>
-  <Class id="_2098" name="ReflectionAccessor" context="_1" location="f69:25" file="f69" line="25" incomplete="1"/>
   <Class id="_2099" name="gp_Trsf" context="_1" location="f86:58" file="f86" line="58" members="_5768 _5769 _5770 _5771 _5772 _5773 _5774 _5775 _5776 _5777 _5778 _5779 _5780 _5781 _5782 _5783 _5784 _5785 _5786 _5787 _5788 _5789 _5790 _5791 _5792 _5793 _5794 _5795 _5796 _5797 _5798 _5799 _5800 _5801 _5802 _5803 _5804 _5805 _5806 _5807 _5808 _5809 _5810 _5811 _5812 _5813 _5814 _5815 _5816 _5817 _5818 _5819 _5820 _5821 _5822" befriending="_5765" size="896" align="64"/>
   <Class id="_2100" name="gp_Vec" context="_1" location="f87:29" file="f87" line="29" members="_5823 _5824 _5825 _5826 _5827 _5828 _5829 _5830 _5831 _5832 _5833 _5834 _5835 _5836 _5837 _5838 _5839 _5840 _5841 _5842 _5843 _5844 _5845 _5846 _5847 _5848 _5849 _5850 _5851 _5852 _5853 _5854 _5855 _5856 _5857 _5858 _5859 _5860 _5861 _5862 _5863 _5864 _5865 _5866 _5867 _5868 _5869 _5870 _5871 _5872 _5873 _5874 _5875 _5876 _5877 _5878 _5879 _5880 _5881 _5882 _5883 _5884 _5885 _5886 _5887 _5888 _5889 _5890 _5891 _5892 _5893 _5894 _5895 _5896 _5897 _5898 _5899 _5900 _5901 _5902 _5903 _5904 _5905 _5906 _5907 _5908" size="192" align="64"/>
   <Enumeration id="_2101" name="gp_TrsfForm" context="_1" location="f88:21" file="f88" line="21" size="32" align="32">
@@ -7612,7 +7612,7 @@
     <Argument name="theV" type="_6894" location="f87:539" file="f87" line="539"/>
   </OperatorFunction>
   <Class id="_2164" name="Precision" context="_1" location="f114:99" file="f114" line="99" members="_6895 _6896 _6897 _6898 _6899 _6900 _6901 _6902 _6903 _6904 _6905 _6906 _6907 _6908 _6909 _6910 _6911 _6912 _6913 _6914 _6915 _6916 _6917 _6918 _6919 _6920 _6921 _6922" size="8" align="8"/>
-  <Class id="_2165" name="gp_Lin" context="_1" location="f115:42" file="f115" line="42" members="_6923 _6924 _6925 _6926 _6927 _6928 _6929 _6930 _6931 _6932 _6933 _6934 _6935 _6936 _6937 _6938 _6939 _6940 _6941 _6942 _6943 _6944 _6945 _6946 _6947 _6948 _6949 _6950 _6951 _6952 _6953 _6954 _6955 _6956 _6957 _6958 _6959 _6960 _6961 _6962 _6963 _6964 _6965 _6966" befriending="_2098" size="384" align="64"/>
+  <Class id="_2165" name="gp_Lin" context="_1" location="f115:42" file="f115" line="42" members="_6923 _6924 _6925 _6926 _6927 _6928 _6929 _6930 _6931 _6932 _6933 _6934 _6935 _6936 _6937 _6938 _6939 _6940 _6941 _6942 _6943 _6944 _6945 _6946 _6947 _6948 _6949 _6950 _6951 _6952 _6953 _6954 _6955 _6956 _6957 _6958 _6959 _6960 _6961 _6962 _6963 _6964 _6965 _6966" befriending="_2096" size="384" align="64"/>
   <FundamentalType id="_2166" name="__int128" size="128" align="128"/>
   <FundamentalType id="_2167" name="unsigned __int128" size="128" align="128"/>
   <Struct id="_2168" name="__NSConstantString_tag" context="_1" location="f0:0" file="f0" line="0" members="_6967 _6968 _6969 _6970" size="256" align="64"/>
@@ -14802,131 +14802,131 @@
   <OperatorMethod id="_5293" name="=" returns="_19653" context="_2070" access="public" location="f70:35" file="f70" line="35" inline="1" artificial="1" mangled="_ZN6gp_DiraSERKS_">
     <Argument type="_19652" location="f70:35" file="f70" line="35"/>
   </OperatorMethod>
-  <OperatorMethod id="_5294" name="new" returns="_4742" context="_2071" access="public" location="f71:40" file="f71" line="40" static="1" inline="1" mangled="_ZN6gp_Ax1nwEy">
-    <Argument name="theSize" type="_12" location="f71:40" file="f71" line="40"/>
+  <OperatorMethod id="_5294" name="new" returns="_4742" context="_2071" access="public" location="f71:46" file="f71" line="46" static="1" inline="1" mangled="_ZN6gp_Ax1nwEy">
+    <Argument name="theSize" type="_12" location="f71:46" file="f71" line="46"/>
   </OperatorMethod>
-  <OperatorMethod id="_5295" name="delete" returns="_4602" context="_2071" access="public" location="f71:40" file="f71" line="40" static="1" inline="1" mangled="_ZN6gp_Ax1dlEPv">
-    <Argument name="theAddress" type="_4742" location="f71:40" file="f71" line="40"/>
+  <OperatorMethod id="_5295" name="delete" returns="_4602" context="_2071" access="public" location="f71:46" file="f71" line="46" static="1" inline="1" mangled="_ZN6gp_Ax1dlEPv">
+    <Argument name="theAddress" type="_4742" location="f71:46" file="f71" line="46"/>
   </OperatorMethod>
-  <OperatorMethod id="_5296" name="new[]" returns="_4742" context="_2071" access="public" location="f71:40" file="f71" line="40" static="1" inline="1" mangled="_ZN6gp_Ax1naEy">
-    <Argument name="theSize" type="_12" location="f71:40" file="f71" line="40"/>
+  <OperatorMethod id="_5296" name="new[]" returns="_4742" context="_2071" access="public" location="f71:46" file="f71" line="46" static="1" inline="1" mangled="_ZN6gp_Ax1naEy">
+    <Argument name="theSize" type="_12" location="f71:46" file="f71" line="46"/>
   </OperatorMethod>
-  <OperatorMethod id="_5297" name="delete[]" returns="_4602" context="_2071" access="public" location="f71:40" file="f71" line="40" static="1" inline="1" mangled="_ZN6gp_Ax1daEPv">
-    <Argument name="theAddress" type="_4742" location="f71:40" file="f71" line="40"/>
+  <OperatorMethod id="_5297" name="delete[]" returns="_4602" context="_2071" access="public" location="f71:46" file="f71" line="46" static="1" inline="1" mangled="_ZN6gp_Ax1daEPv">
+    <Argument name="theAddress" type="_4742" location="f71:46" file="f71" line="46"/>
   </OperatorMethod>
-  <OperatorMethod id="_5298" name="new" returns="_4742" context="_2071" access="public" location="f71:40" file="f71" line="40" static="1" inline="1" mangled="_ZN6gp_Ax1nwEyPv">
-    <Argument type="_12" location="f71:40" file="f71" line="40"/>
-    <Argument name="theAddress" type="_4742" location="f71:40" file="f71" line="40"/>
+  <OperatorMethod id="_5298" name="new" returns="_4742" context="_2071" access="public" location="f71:46" file="f71" line="46" static="1" inline="1" mangled="_ZN6gp_Ax1nwEyPv">
+    <Argument type="_12" location="f71:46" file="f71" line="46"/>
+    <Argument name="theAddress" type="_4742" location="f71:46" file="f71" line="46"/>
   </OperatorMethod>
-  <OperatorMethod id="_5299" name="delete" returns="_4602" context="_2071" access="public" location="f71:40" file="f71" line="40" static="1" inline="1" mangled="_ZN6gp_Ax1dlEPvS0_">
-    <Argument type="_4742" location="f71:40" file="f71" line="40"/>
-    <Argument type="_4742" location="f71:40" file="f71" line="40"/>
+  <OperatorMethod id="_5299" name="delete" returns="_4602" context="_2071" access="public" location="f71:46" file="f71" line="46" static="1" inline="1" mangled="_ZN6gp_Ax1dlEPvS0_">
+    <Argument type="_4742" location="f71:46" file="f71" line="46"/>
+    <Argument type="_4742" location="f71:46" file="f71" line="46"/>
   </OperatorMethod>
-  <Constructor id="_5300" name="gp_Ax1" context="_2071" access="public" location="f71:44" file="f71" line="44" inline="1"/>
-  <Constructor id="_5301" name="gp_Ax1" context="_2071" access="public" location="f71:51" file="f71" line="51" inline="1">
-    <Argument name="theP" type="_19645" location="f71:51" file="f71" line="51"/>
-    <Argument name="theV" type="_19652" location="f71:51" file="f71" line="51"/>
+  <Constructor id="_5300" name="gp_Ax1" context="_2071" access="public" location="f71:50" file="f71" line="50" inline="1"/>
+  <Constructor id="_5301" name="gp_Ax1" context="_2071" access="public" location="f71:57" file="f71" line="57" inline="1">
+    <Argument name="theP" type="_19645" location="f71:57" file="f71" line="57"/>
+    <Argument name="theV" type="_19652" location="f71:57" file="f71" line="57"/>
   </Constructor>
-  <Method id="_5302" name="SetDirection" returns="_4602" context="_2071" access="public" location="f71:58" file="f71" line="58" inline="1" mangled="_ZN6gp_Ax112SetDirectionERK6gp_Dir">
-    <Argument name="theV" type="_19652" location="f71:58" file="f71" line="58"/>
+  <Method id="_5302" name="SetDirection" returns="_4602" context="_2071" access="public" location="f71:64" file="f71" line="64" inline="1" mangled="_ZN6gp_Ax112SetDirectionERK6gp_Dir">
+    <Argument name="theV" type="_19652" location="f71:64" file="f71" line="64"/>
   </Method>
-  <Method id="_5303" name="SetLocation" returns="_4602" context="_2071" access="public" location="f71:61" file="f71" line="61" inline="1" mangled="_ZN6gp_Ax111SetLocationERK6gp_Pnt">
-    <Argument name="theP" type="_19645" location="f71:61" file="f71" line="61"/>
+  <Method id="_5303" name="SetLocation" returns="_4602" context="_2071" access="public" location="f71:67" file="f71" line="67" inline="1" mangled="_ZN6gp_Ax111SetLocationERK6gp_Pnt">
+    <Argument name="theP" type="_19645" location="f71:67" file="f71" line="67"/>
   </Method>
-  <Method id="_5304" name="Direction" returns="_19652" context="_2071" access="public" location="f71:64" file="f71" line="64" const="1" inline="1" mangled="_ZNK6gp_Ax19DirectionEv"/>
-  <Method id="_5305" name="Location" returns="_19645" context="_2071" access="public" location="f71:67" file="f71" line="67" const="1" inline="1" mangled="_ZNK6gp_Ax18LocationEv"/>
-  <Method id="_5306" name="IsCoaxial" returns="_174" context="_2071" access="public" location="f71:76" file="f71" line="76" const="1" mangled="_ZNK6gp_Ax19IsCoaxialERKS_dd" attributes="dllexport">
-    <Argument name="Other" type="_19646" location="f71:76" file="f71" line="76"/>
-    <Argument name="AngularTolerance" type="_173c" location="f71:77" file="f71" line="77"/>
-    <Argument name="LinearTolerance" type="_173c" location="f71:78" file="f71" line="78"/>
+  <Method id="_5304" name="Direction" returns="_19652" context="_2071" access="public" location="f71:70" file="f71" line="70" const="1" inline="1" mangled="_ZNK6gp_Ax19DirectionEv"/>
+  <Method id="_5305" name="Location" returns="_19645" context="_2071" access="public" location="f71:73" file="f71" line="73" const="1" inline="1" mangled="_ZNK6gp_Ax18LocationEv"/>
+  <Method id="_5306" name="IsCoaxial" returns="_174" context="_2071" access="public" location="f71:82" file="f71" line="82" const="1" mangled="_ZNK6gp_Ax19IsCoaxialERKS_dd" attributes="dllexport">
+    <Argument name="Other" type="_19646" location="f71:82" file="f71" line="82"/>
+    <Argument name="AngularTolerance" type="_173c" location="f71:83" file="f71" line="83"/>
+    <Argument name="LinearTolerance" type="_173c" location="f71:84" file="f71" line="84"/>
   </Method>
-  <Method id="_5307" name="IsNormal" returns="_174" context="_2071" access="public" location="f71:83" file="f71" line="83" const="1" inline="1" mangled="_ZNK6gp_Ax18IsNormalERKS_d">
-    <Argument name="theOther" type="_19646" location="f71:83" file="f71" line="83"/>
-    <Argument name="theAngularTolerance" type="_173c" location="f71:83" file="f71" line="83"/>
+  <Method id="_5307" name="IsNormal" returns="_174" context="_2071" access="public" location="f71:89" file="f71" line="89" const="1" inline="1" mangled="_ZNK6gp_Ax18IsNormalERKS_d">
+    <Argument name="theOther" type="_19646" location="f71:89" file="f71" line="89"/>
+    <Argument name="theAngularTolerance" type="_173c" location="f71:89" file="f71" line="89"/>
   </Method>
-  <Method id="_5308" name="IsOpposite" returns="_174" context="_2071" access="public" location="f71:91" file="f71" line="91" const="1" inline="1" mangled="_ZNK6gp_Ax110IsOppositeERKS_d">
-    <Argument name="theOther" type="_19646" location="f71:91" file="f71" line="91"/>
-    <Argument name="theAngularTolerance" type="_173c" location="f71:91" file="f71" line="91"/>
+  <Method id="_5308" name="IsOpposite" returns="_174" context="_2071" access="public" location="f71:97" file="f71" line="97" const="1" inline="1" mangled="_ZNK6gp_Ax110IsOppositeERKS_d">
+    <Argument name="theOther" type="_19646" location="f71:97" file="f71" line="97"/>
+    <Argument name="theAngularTolerance" type="_173c" location="f71:97" file="f71" line="97"/>
   </Method>
-  <Method id="_5309" name="IsParallel" returns="_174" context="_2071" access="public" location="f71:99" file="f71" line="99" const="1" inline="1" mangled="_ZNK6gp_Ax110IsParallelERKS_d">
-    <Argument name="theOther" type="_19646" location="f71:99" file="f71" line="99"/>
-    <Argument name="theAngularTolerance" type="_173c" location="f71:99" file="f71" line="99"/>
+  <Method id="_5309" name="IsParallel" returns="_174" context="_2071" access="public" location="f71:105" file="f71" line="105" const="1" inline="1" mangled="_ZNK6gp_Ax110IsParallelERKS_d">
+    <Argument name="theOther" type="_19646" location="f71:105" file="f71" line="105"/>
+    <Argument name="theAngularTolerance" type="_173c" location="f71:105" file="f71" line="105"/>
   </Method>
-  <Method id="_5310" name="Angle" returns="_173" context="_2071" access="public" location="f71:106" file="f71" line="106" const="1" inline="1" mangled="_ZNK6gp_Ax15AngleERKS_">
-    <Argument name="theOther" type="_19646" location="f71:106" file="f71" line="106"/>
+  <Method id="_5310" name="Angle" returns="_173" context="_2071" access="public" location="f71:112" file="f71" line="112" const="1" inline="1" mangled="_ZNK6gp_Ax15AngleERKS_">
+    <Argument name="theOther" type="_19646" location="f71:112" file="f71" line="112"/>
   </Method>
-  <Method id="_5311" name="Reverse" returns="_4602" context="_2071" access="public" location="f71:109" file="f71" line="109" inline="1" mangled="_ZN6gp_Ax17ReverseEv"/>
-  <Method id="_5312" name="Reversed" returns="_2071" context="_2071" access="public" location="f71:112" file="f71" line="112" const="1" inline="1" mangled="_ZNK6gp_Ax18ReversedEv"/>
-  <Method id="_5313" name="Mirror" returns="_4602" context="_2071" access="public" location="f71:121" file="f71" line="121" mangled="_ZN6gp_Ax16MirrorERK6gp_Pnt" attributes="dllexport">
-    <Argument name="P" type="_19645" location="f71:121" file="f71" line="121"/>
+  <Method id="_5311" name="Reverse" returns="_4602" context="_2071" access="public" location="f71:115" file="f71" line="115" inline="1" mangled="_ZN6gp_Ax17ReverseEv"/>
+  <Method id="_5312" name="Reversed" returns="_2071" context="_2071" access="public" location="f71:118" file="f71" line="118" const="1" inline="1" mangled="_ZNK6gp_Ax18ReversedEv"/>
+  <Method id="_5313" name="Mirror" returns="_4602" context="_2071" access="public" location="f71:127" file="f71" line="127" mangled="_ZN6gp_Ax16MirrorERK6gp_Pnt" attributes="dllexport">
+    <Argument name="P" type="_19645" location="f71:127" file="f71" line="127"/>
   </Method>
-  <Method id="_5314" name="Mirrored" returns="_2071" context="_2071" access="public" location="f71:126" file="f71" line="126" const="1" mangled="_ZNK6gp_Ax18MirroredERK6gp_Pnt" attributes="dllexport">
-    <Argument name="P" type="_19645" location="f71:126" file="f71" line="126"/>
+  <Method id="_5314" name="Mirrored" returns="_2071" context="_2071" access="public" location="f71:132" file="f71" line="132" const="1" mangled="_ZNK6gp_Ax18MirroredERK6gp_Pnt" attributes="dllexport">
+    <Argument name="P" type="_19645" location="f71:132" file="f71" line="132"/>
   </Method>
-  <Method id="_5315" name="Mirror" returns="_4602" context="_2071" access="public" location="f71:131" file="f71" line="131" mangled="_ZN6gp_Ax16MirrorERKS_" attributes="dllexport">
-    <Argument name="A1" type="_19646" location="f71:131" file="f71" line="131"/>
+  <Method id="_5315" name="Mirror" returns="_4602" context="_2071" access="public" location="f71:137" file="f71" line="137" mangled="_ZN6gp_Ax16MirrorERKS_" attributes="dllexport">
+    <Argument name="A1" type="_19646" location="f71:137" file="f71" line="137"/>
   </Method>
-  <Method id="_5316" name="Mirrored" returns="_2071" context="_2071" access="public" location="f71:136" file="f71" line="136" const="1" mangled="_ZNK6gp_Ax18MirroredERKS_" attributes="dllexport">
-    <Argument name="A1" type="_19646" location="f71:136" file="f71" line="136"/>
+  <Method id="_5316" name="Mirrored" returns="_2071" context="_2071" access="public" location="f71:142" file="f71" line="142" const="1" mangled="_ZNK6gp_Ax18MirroredERKS_" attributes="dllexport">
+    <Argument name="A1" type="_19646" location="f71:142" file="f71" line="142"/>
   </Method>
-  <Method id="_5317" name="Mirror" returns="_4602" context="_2071" access="public" location="f71:142" file="f71" line="142" mangled="_ZN6gp_Ax16MirrorERK6gp_Ax2" attributes="dllexport">
-    <Argument name="A2" type="_19647" location="f71:142" file="f71" line="142"/>
-  </Method>
-  <Method id="_5318" name="Mirrored" returns="_2071" context="_2071" access="public" location="f71:148" file="f71" line="148" const="1" mangled="_ZNK6gp_Ax18MirroredERK6gp_Ax2" attributes="dllexport">
+  <Method id="_5317" name="Mirror" returns="_4602" context="_2071" access="public" location="f71:148" file="f71" line="148" mangled="_ZN6gp_Ax16MirrorERK6gp_Ax2" attributes="dllexport">
     <Argument name="A2" type="_19647" location="f71:148" file="f71" line="148"/>
   </Method>
-  <Method id="_5319" name="Rotate" returns="_4602" context="_2071" access="public" location="f71:152" file="f71" line="152" inline="1" mangled="_ZN6gp_Ax16RotateERKS_d">
-    <Argument name="theA1" type="_19646" location="f71:152" file="f71" line="152"/>
-    <Argument name="theAngRad" type="_173c" location="f71:152" file="f71" line="152"/>
+  <Method id="_5318" name="Mirrored" returns="_2071" context="_2071" access="public" location="f71:154" file="f71" line="154" const="1" mangled="_ZNK6gp_Ax18MirroredERK6gp_Ax2" attributes="dllexport">
+    <Argument name="A2" type="_19647" location="f71:154" file="f71" line="154"/>
   </Method>
-  <Method id="_5320" name="Rotated" returns="_2071" context="_2071" access="public" location="f71:160" file="f71" line="160" const="1" inline="1" mangled="_ZNK6gp_Ax17RotatedERKS_d">
-    <Argument name="theA1" type="_19646" location="f71:160" file="f71" line="160"/>
-    <Argument name="theAngRad" type="_173c" location="f71:160" file="f71" line="160"/>
+  <Method id="_5319" name="Rotate" returns="_4602" context="_2071" access="public" location="f71:158" file="f71" line="158" inline="1" mangled="_ZN6gp_Ax16RotateERKS_d">
+    <Argument name="theA1" type="_19646" location="f71:158" file="f71" line="158"/>
+    <Argument name="theAngRad" type="_173c" location="f71:158" file="f71" line="158"/>
   </Method>
-  <Method id="_5321" name="Scale" returns="_4602" context="_2071" access="public" location="f71:170" file="f71" line="170" inline="1" mangled="_ZN6gp_Ax15ScaleERK6gp_Pntd">
-    <Argument name="theP" type="_19645" location="f71:170" file="f71" line="170"/>
-    <Argument name="theS" type="_173c" location="f71:170" file="f71" line="170"/>
+  <Method id="_5320" name="Rotated" returns="_2071" context="_2071" access="public" location="f71:166" file="f71" line="166" const="1" inline="1" mangled="_ZNK6gp_Ax17RotatedERKS_d">
+    <Argument name="theA1" type="_19646" location="f71:166" file="f71" line="166"/>
+    <Argument name="theAngRad" type="_173c" location="f71:166" file="f71" line="166"/>
   </Method>
-  <Method id="_5322" name="Scaled" returns="_2071" context="_2071" access="public" location="f71:182" file="f71" line="182" const="1" inline="1" mangled="_ZNK6gp_Ax16ScaledERK6gp_Pntd">
-    <Argument name="theP" type="_19645" location="f71:182" file="f71" line="182"/>
-    <Argument name="theS" type="_173c" location="f71:182" file="f71" line="182"/>
+  <Method id="_5321" name="Scale" returns="_4602" context="_2071" access="public" location="f71:176" file="f71" line="176" inline="1" mangled="_ZN6gp_Ax15ScaleERK6gp_Pntd">
+    <Argument name="theP" type="_19645" location="f71:176" file="f71" line="176"/>
+    <Argument name="theS" type="_173c" location="f71:176" file="f71" line="176"/>
   </Method>
-  <Method id="_5323" name="Transform" returns="_4602" context="_2071" access="public" location="f71:190" file="f71" line="190" inline="1" mangled="_ZN6gp_Ax19TransformERK7gp_Trsf">
-    <Argument name="theT" type="_19648" location="f71:190" file="f71" line="190"/>
+  <Method id="_5322" name="Scaled" returns="_2071" context="_2071" access="public" location="f71:188" file="f71" line="188" const="1" inline="1" mangled="_ZNK6gp_Ax16ScaledERK6gp_Pntd">
+    <Argument name="theP" type="_19645" location="f71:188" file="f71" line="188"/>
+    <Argument name="theS" type="_173c" location="f71:188" file="f71" line="188"/>
   </Method>
-  <Method id="_5324" name="Transformed" returns="_2071" context="_2071" access="public" location="f71:200" file="f71" line="200" const="1" inline="1" mangled="_ZNK6gp_Ax111TransformedERK7gp_Trsf">
-    <Argument name="theT" type="_19648" location="f71:200" file="f71" line="200"/>
+  <Method id="_5323" name="Transform" returns="_4602" context="_2071" access="public" location="f71:196" file="f71" line="196" inline="1" mangled="_ZN6gp_Ax19TransformERK7gp_Trsf">
+    <Argument name="theT" type="_19648" location="f71:196" file="f71" line="196"/>
   </Method>
-  <Method id="_5325" name="Translate" returns="_4602" context="_2071" access="public" location="f71:208" file="f71" line="208" inline="1" mangled="_ZN6gp_Ax19TranslateERK6gp_Vec">
-    <Argument name="theV" type="_6894" location="f71:208" file="f71" line="208"/>
+  <Method id="_5324" name="Transformed" returns="_2071" context="_2071" access="public" location="f71:206" file="f71" line="206" const="1" inline="1" mangled="_ZNK6gp_Ax111TransformedERK7gp_Trsf">
+    <Argument name="theT" type="_19648" location="f71:206" file="f71" line="206"/>
   </Method>
-  <Method id="_5326" name="Translated" returns="_2071" context="_2071" access="public" location="f71:212" file="f71" line="212" const="1" inline="1" mangled="_ZNK6gp_Ax110TranslatedERK6gp_Vec">
-    <Argument name="theV" type="_6894" location="f71:212" file="f71" line="212"/>
+  <Method id="_5325" name="Translate" returns="_4602" context="_2071" access="public" location="f71:214" file="f71" line="214" inline="1" mangled="_ZN6gp_Ax19TranslateERK6gp_Vec">
+    <Argument name="theV" type="_6894" location="f71:214" file="f71" line="214"/>
   </Method>
-  <Method id="_5327" name="Translate" returns="_4602" context="_2071" access="public" location="f71:222" file="f71" line="222" inline="1" mangled="_ZN6gp_Ax19TranslateERK6gp_PntS2_">
-    <Argument name="theP1" type="_19645" location="f71:222" file="f71" line="222"/>
-    <Argument name="theP2" type="_19645" location="f71:222" file="f71" line="222"/>
+  <Method id="_5326" name="Translated" returns="_2071" context="_2071" access="public" location="f71:218" file="f71" line="218" const="1" inline="1" mangled="_ZNK6gp_Ax110TranslatedERK6gp_Vec">
+    <Argument name="theV" type="_6894" location="f71:218" file="f71" line="218"/>
   </Method>
-  <Method id="_5328" name="Translated" returns="_2071" context="_2071" access="public" location="f71:227" file="f71" line="227" const="1" inline="1" mangled="_ZNK6gp_Ax110TranslatedERK6gp_PntS2_">
-    <Argument name="theP1" type="_19645" location="f71:227" file="f71" line="227"/>
-    <Argument name="theP2" type="_19645" location="f71:227" file="f71" line="227"/>
+  <Method id="_5327" name="Translate" returns="_4602" context="_2071" access="public" location="f71:228" file="f71" line="228" inline="1" mangled="_ZN6gp_Ax19TranslateERK6gp_PntS2_">
+    <Argument name="theP1" type="_19645" location="f71:228" file="f71" line="228"/>
+    <Argument name="theP2" type="_19645" location="f71:228" file="f71" line="228"/>
   </Method>
-  <Method id="_5329" name="DumpJson" returns="_4602" context="_2071" access="public" location="f71:235" file="f71" line="235" const="1" mangled="_ZNK6gp_Ax18DumpJsonERSoi" attributes="dllexport">
-    <Argument name="theOStream" type="_5535" location="f71:235" file="f71" line="235"/>
-    <Argument name="theDepth" type="_171" location="f71:235" file="f71" line="235" default="-1"/>
+  <Method id="_5328" name="Translated" returns="_2071" context="_2071" access="public" location="f71:233" file="f71" line="233" const="1" inline="1" mangled="_ZNK6gp_Ax110TranslatedERK6gp_PntS2_">
+    <Argument name="theP1" type="_19645" location="f71:233" file="f71" line="233"/>
+    <Argument name="theP2" type="_19645" location="f71:233" file="f71" line="233"/>
   </Method>
-  <Method id="_5330" name="InitFromJson" returns="_174" context="_2071" access="public" location="f71:238" file="f71" line="238" mangled="_ZN6gp_Ax112InitFromJsonERKNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEERi" attributes="dllexport">
-    <Argument name="theSStream" type="_19649" location="f71:238" file="f71" line="238"/>
-    <Argument name="theStreamPos" type="_19650" location="f71:239" file="f71" line="239"/>
+  <Method id="_5329" name="DumpJson" returns="_4602" context="_2071" access="public" location="f71:241" file="f71" line="241" const="1" mangled="_ZNK6gp_Ax18DumpJsonERSoi" attributes="dllexport">
+    <Argument name="theOStream" type="_5535" location="f71:241" file="f71" line="241"/>
+    <Argument name="theDepth" type="_171" location="f71:241" file="f71" line="241" default="-1"/>
   </Method>
-  <Field id="_5331" name="loc" type="_2069" context="_2071" access="private" location="f71:242" file="f71" line="242" offset="0"/>
-  <Field id="_5332" name="vdir" type="_2070" context="_2071" access="private" location="f71:243" file="f71" line="243" offset="192"/>
-  <Constructor id="_5333" name="gp_Ax1" context="_2071" access="public" location="f71:37" file="f71" line="37" inline="1" artificial="1">
-    <Argument type="_19646" location="f71:37" file="f71" line="37"/>
+  <Method id="_5330" name="InitFromJson" returns="_174" context="_2071" access="public" location="f71:244" file="f71" line="244" mangled="_ZN6gp_Ax112InitFromJsonERKNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEERi" attributes="dllexport">
+    <Argument name="theSStream" type="_19649" location="f71:244" file="f71" line="244"/>
+    <Argument name="theStreamPos" type="_19650" location="f71:245" file="f71" line="245"/>
+  </Method>
+  <Field id="_5331" name="loc" type="_2069" context="_2071" access="private" location="f71:248" file="f71" line="248" offset="0"/>
+  <Field id="_5332" name="vdir" type="_2070" context="_2071" access="private" location="f71:249" file="f71" line="249" offset="192"/>
+  <Constructor id="_5333" name="gp_Ax1" context="_2071" access="public" location="f71:40" file="f71" line="40" inline="1" artificial="1">
+    <Argument type="_19646" location="f71:40" file="f71" line="40"/>
   </Constructor>
-  <Destructor id="_5334" name="gp_Ax1" context="_2071" access="public" location="f71:37" file="f71" line="37" inline="1" artificial="1"/>
-  <OperatorMethod id="_5335" name="=" returns="_19654" context="_2071" access="public" location="f71:37" file="f71" line="37" inline="1" artificial="1" mangled="_ZN6gp_Ax1aSERKS_">
-    <Argument type="_19646" location="f71:37" file="f71" line="37"/>
+  <Destructor id="_5334" name="gp_Ax1" context="_2071" access="public" location="f71:40" file="f71" line="40" inline="1" artificial="1"/>
+  <OperatorMethod id="_5335" name="=" returns="_19654" context="_2071" access="public" location="f71:40" file="f71" line="40" inline="1" artificial="1" mangled="_ZN6gp_Ax1aSERKS_">
+    <Argument type="_19646" location="f71:40" file="f71" line="40"/>
   </OperatorMethod>
   <OperatorMethod id="_5336" name="new" returns="_4742" context="_2072" access="public" location="f72:56" file="f72" line="56" static="1" inline="1" mangled="_ZN6gp_Ax2nwEy">
     <Argument name="theSize" type="_12" location="f72:56" file="f72" line="56"/>
@@ -15676,237 +15676,237 @@
   <Constructor id="_5627" name="Standard_ConstructionError" context="_2091" access="public" location="f83:36" file="f83" line="36" inline="1" artificial="1">
     <Argument type="_19696" location="f83:36" file="f83" line="36"/>
   </Constructor>
-  <OperatorMethod id="_5628" name="new" returns="_4742" context="_2093" access="public" location="f84:34" file="f84" line="34" static="1" inline="1" mangled="_ZN6gp_XYZnwEy">
-    <Argument name="theSize" type="_12" location="f84:34" file="f84" line="34"/>
+  <OperatorMethod id="_5628" name="new" returns="_4742" context="_2093" access="public" location="f84:40" file="f84" line="40" static="1" inline="1" mangled="_ZN6gp_XYZnwEy">
+    <Argument name="theSize" type="_12" location="f84:40" file="f84" line="40"/>
   </OperatorMethod>
-  <OperatorMethod id="_5629" name="delete" returns="_4602" context="_2093" access="public" location="f84:34" file="f84" line="34" static="1" inline="1" mangled="_ZN6gp_XYZdlEPv">
-    <Argument name="theAddress" type="_4742" location="f84:34" file="f84" line="34"/>
+  <OperatorMethod id="_5629" name="delete" returns="_4602" context="_2093" access="public" location="f84:40" file="f84" line="40" static="1" inline="1" mangled="_ZN6gp_XYZdlEPv">
+    <Argument name="theAddress" type="_4742" location="f84:40" file="f84" line="40"/>
   </OperatorMethod>
-  <OperatorMethod id="_5630" name="new[]" returns="_4742" context="_2093" access="public" location="f84:34" file="f84" line="34" static="1" inline="1" mangled="_ZN6gp_XYZnaEy">
-    <Argument name="theSize" type="_12" location="f84:34" file="f84" line="34"/>
+  <OperatorMethod id="_5630" name="new[]" returns="_4742" context="_2093" access="public" location="f84:40" file="f84" line="40" static="1" inline="1" mangled="_ZN6gp_XYZnaEy">
+    <Argument name="theSize" type="_12" location="f84:40" file="f84" line="40"/>
   </OperatorMethod>
-  <OperatorMethod id="_5631" name="delete[]" returns="_4602" context="_2093" access="public" location="f84:34" file="f84" line="34" static="1" inline="1" mangled="_ZN6gp_XYZdaEPv">
-    <Argument name="theAddress" type="_4742" location="f84:34" file="f84" line="34"/>
+  <OperatorMethod id="_5631" name="delete[]" returns="_4602" context="_2093" access="public" location="f84:40" file="f84" line="40" static="1" inline="1" mangled="_ZN6gp_XYZdaEPv">
+    <Argument name="theAddress" type="_4742" location="f84:40" file="f84" line="40"/>
   </OperatorMethod>
-  <OperatorMethod id="_5632" name="new" returns="_4742" context="_2093" access="public" location="f84:34" file="f84" line="34" static="1" inline="1" mangled="_ZN6gp_XYZnwEyPv">
-    <Argument type="_12" location="f84:34" file="f84" line="34"/>
-    <Argument name="theAddress" type="_4742" location="f84:34" file="f84" line="34"/>
+  <OperatorMethod id="_5632" name="new" returns="_4742" context="_2093" access="public" location="f84:40" file="f84" line="40" static="1" inline="1" mangled="_ZN6gp_XYZnwEyPv">
+    <Argument type="_12" location="f84:40" file="f84" line="40"/>
+    <Argument name="theAddress" type="_4742" location="f84:40" file="f84" line="40"/>
   </OperatorMethod>
-  <OperatorMethod id="_5633" name="delete" returns="_4602" context="_2093" access="public" location="f84:34" file="f84" line="34" static="1" inline="1" mangled="_ZN6gp_XYZdlEPvS0_">
-    <Argument type="_4742" location="f84:34" file="f84" line="34"/>
-    <Argument type="_4742" location="f84:34" file="f84" line="34"/>
+  <OperatorMethod id="_5633" name="delete" returns="_4602" context="_2093" access="public" location="f84:40" file="f84" line="40" static="1" inline="1" mangled="_ZN6gp_XYZdlEPvS0_">
+    <Argument type="_4742" location="f84:40" file="f84" line="40"/>
+    <Argument type="_4742" location="f84:40" file="f84" line="40"/>
   </OperatorMethod>
-  <Constructor id="_5634" name="gp_XYZ" context="_2093" access="public" location="f84:37" file="f84" line="37" inline="1"/>
-  <Constructor id="_5635" name="gp_XYZ" context="_2093" access="public" location="f84:45" file="f84" line="45" inline="1">
-    <Argument name="theX" type="_173c" location="f84:45" file="f84" line="45"/>
-    <Argument name="theY" type="_173c" location="f84:45" file="f84" line="45"/>
-    <Argument name="theZ" type="_173c" location="f84:45" file="f84" line="45"/>
+  <Constructor id="_5634" name="gp_XYZ" context="_2093" access="public" location="f84:43" file="f84" line="43" inline="1"/>
+  <Constructor id="_5635" name="gp_XYZ" context="_2093" access="public" location="f84:51" file="f84" line="51" inline="1">
+    <Argument name="theX" type="_173c" location="f84:51" file="f84" line="51"/>
+    <Argument name="theY" type="_173c" location="f84:51" file="f84" line="51"/>
+    <Argument name="theZ" type="_173c" location="f84:51" file="f84" line="51"/>
   </Constructor>
-  <Method id="_5636" name="SetCoord" returns="_4602" context="_2093" access="public" location="f84:54" file="f84" line="54" inline="1" mangled="_ZN6gp_XYZ8SetCoordEddd">
-    <Argument name="theX" type="_173c" location="f84:54" file="f84" line="54"/>
-    <Argument name="theY" type="_173c" location="f84:54" file="f84" line="54"/>
-    <Argument name="theZ" type="_173c" location="f84:54" file="f84" line="54"/>
+  <Method id="_5636" name="SetCoord" returns="_4602" context="_2093" access="public" location="f84:60" file="f84" line="60" inline="1" mangled="_ZN6gp_XYZ8SetCoordEddd">
+    <Argument name="theX" type="_173c" location="f84:60" file="f84" line="60"/>
+    <Argument name="theY" type="_173c" location="f84:60" file="f84" line="60"/>
+    <Argument name="theZ" type="_173c" location="f84:60" file="f84" line="60"/>
   </Method>
-  <Method id="_5637" name="SetCoord" returns="_4602" context="_2093" access="public" location="f84:66" file="f84" line="66" inline="1" mangled="_ZN6gp_XYZ8SetCoordEid">
-    <Argument name="theIndex" type="_171c" location="f84:66" file="f84" line="66"/>
-    <Argument name="theXi" type="_173c" location="f84:66" file="f84" line="66"/>
+  <Method id="_5637" name="SetCoord" returns="_4602" context="_2093" access="public" location="f84:72" file="f84" line="72" inline="1" mangled="_ZN6gp_XYZ8SetCoordEid">
+    <Argument name="theIndex" type="_171c" location="f84:72" file="f84" line="72"/>
+    <Argument name="theXi" type="_173c" location="f84:72" file="f84" line="72"/>
   </Method>
-  <Method id="_5638" name="SetX" returns="_4602" context="_2093" access="public" location="f84:73" file="f84" line="73" inline="1" mangled="_ZN6gp_XYZ4SetXEd">
-    <Argument name="theX" type="_173c" location="f84:73" file="f84" line="73"/>
+  <Method id="_5638" name="SetX" returns="_4602" context="_2093" access="public" location="f84:79" file="f84" line="79" inline="1" mangled="_ZN6gp_XYZ4SetXEd">
+    <Argument name="theX" type="_173c" location="f84:79" file="f84" line="79"/>
   </Method>
-  <Method id="_5639" name="SetY" returns="_4602" context="_2093" access="public" location="f84:76" file="f84" line="76" inline="1" mangled="_ZN6gp_XYZ4SetYEd">
-    <Argument name="theY" type="_173c" location="f84:76" file="f84" line="76"/>
+  <Method id="_5639" name="SetY" returns="_4602" context="_2093" access="public" location="f84:82" file="f84" line="82" inline="1" mangled="_ZN6gp_XYZ4SetYEd">
+    <Argument name="theY" type="_173c" location="f84:82" file="f84" line="82"/>
   </Method>
-  <Method id="_5640" name="SetZ" returns="_4602" context="_2093" access="public" location="f84:79" file="f84" line="79" inline="1" mangled="_ZN6gp_XYZ4SetZEd">
-    <Argument name="theZ" type="_173c" location="f84:79" file="f84" line="79"/>
+  <Method id="_5640" name="SetZ" returns="_4602" context="_2093" access="public" location="f84:85" file="f84" line="85" inline="1" mangled="_ZN6gp_XYZ4SetZEd">
+    <Argument name="theZ" type="_173c" location="f84:85" file="f84" line="85"/>
   </Method>
-  <Method id="_5641" name="Coord" returns="_173" context="_2093" access="public" location="f84:87" file="f84" line="87" const="1" inline="1" mangled="_ZNK6gp_XYZ5CoordEi">
-    <Argument name="theIndex" type="_171c" location="f84:87" file="f84" line="87"/>
-  </Method>
-  <Method id="_5642" name="ChangeCoord" returns="_19643" context="_2093" access="public" location="f84:93" file="f84" line="93" inline="1" mangled="_ZN6gp_XYZ11ChangeCoordEi">
+  <Method id="_5641" name="Coord" returns="_173" context="_2093" access="public" location="f84:93" file="f84" line="93" const="1" inline="1" mangled="_ZNK6gp_XYZ5CoordEi">
     <Argument name="theIndex" type="_171c" location="f84:93" file="f84" line="93"/>
   </Method>
-  <Method id="_5643" name="Coord" returns="_4602" context="_2093" access="public" location="f84:99" file="f84" line="99" const="1" inline="1" mangled="_ZNK6gp_XYZ5CoordERdS0_S0_">
-    <Argument name="theX" type="_19643" location="f84:99" file="f84" line="99"/>
-    <Argument name="theY" type="_19643" location="f84:99" file="f84" line="99"/>
-    <Argument name="theZ" type="_19643" location="f84:99" file="f84" line="99"/>
+  <Method id="_5642" name="ChangeCoord" returns="_19643" context="_2093" access="public" location="f84:99" file="f84" line="99" inline="1" mangled="_ZN6gp_XYZ11ChangeCoordEi">
+    <Argument name="theIndex" type="_171c" location="f84:99" file="f84" line="99"/>
   </Method>
-  <Method id="_5644" name="GetData" returns="_19697" context="_2093" access="public" location="f84:109" file="f84" line="109" const="1" inline="1" mangled="_ZNK6gp_XYZ7GetDataEv"/>
-  <Method id="_5645" name="ChangeData" returns="_19698" context="_2093" access="public" location="f84:114" file="f84" line="114" inline="1" mangled="_ZN6gp_XYZ10ChangeDataEv"/>
-  <Method id="_5646" name="X" returns="_173" context="_2093" access="public" location="f84:117" file="f84" line="117" const="1" inline="1" mangled="_ZNK6gp_XYZ1XEv"/>
-  <Method id="_5647" name="Y" returns="_173" context="_2093" access="public" location="f84:120" file="f84" line="120" const="1" inline="1" mangled="_ZNK6gp_XYZ1YEv"/>
-  <Method id="_5648" name="Z" returns="_173" context="_2093" access="public" location="f84:123" file="f84" line="123" const="1" inline="1" mangled="_ZNK6gp_XYZ1ZEv"/>
-  <Method id="_5649" name="Modulus" returns="_173" context="_2093" access="public" location="f84:126" file="f84" line="126" const="1" inline="1" mangled="_ZNK6gp_XYZ7ModulusEv"/>
-  <Method id="_5650" name="SquareModulus" returns="_173" context="_2093" access="public" location="f84:129" file="f84" line="129" const="1" inline="1" mangled="_ZNK6gp_XYZ13SquareModulusEv"/>
-  <Method id="_5651" name="IsEqual" returns="_174" context="_2093" access="public" location="f84:137" file="f84" line="137" const="1" mangled="_ZNK6gp_XYZ7IsEqualERKS_d" attributes="dllexport">
-    <Argument name="theOther" type="_5767" location="f84:137" file="f84" line="137"/>
-    <Argument name="theTolerance" type="_173c" location="f84:138" file="f84" line="138"/>
+  <Method id="_5643" name="Coord" returns="_4602" context="_2093" access="public" location="f84:105" file="f84" line="105" const="1" inline="1" mangled="_ZNK6gp_XYZ5CoordERdS0_S0_">
+    <Argument name="theX" type="_19643" location="f84:105" file="f84" line="105"/>
+    <Argument name="theY" type="_19643" location="f84:105" file="f84" line="105"/>
+    <Argument name="theZ" type="_19643" location="f84:105" file="f84" line="105"/>
   </Method>
-  <Method id="_5652" name="Add" returns="_4602" context="_2093" access="public" location="f84:145" file="f84" line="145" inline="1" mangled="_ZN6gp_XYZ3AddERKS_">
-    <Argument name="theOther" type="_5767" location="f84:145" file="f84" line="145"/>
+  <Method id="_5644" name="GetData" returns="_19697" context="_2093" access="public" location="f84:115" file="f84" line="115" const="1" inline="1" mangled="_ZNK6gp_XYZ7GetDataEv"/>
+  <Method id="_5645" name="ChangeData" returns="_19698" context="_2093" access="public" location="f84:120" file="f84" line="120" inline="1" mangled="_ZN6gp_XYZ10ChangeDataEv"/>
+  <Method id="_5646" name="X" returns="_173" context="_2093" access="public" location="f84:123" file="f84" line="123" const="1" inline="1" mangled="_ZNK6gp_XYZ1XEv"/>
+  <Method id="_5647" name="Y" returns="_173" context="_2093" access="public" location="f84:126" file="f84" line="126" const="1" inline="1" mangled="_ZNK6gp_XYZ1YEv"/>
+  <Method id="_5648" name="Z" returns="_173" context="_2093" access="public" location="f84:129" file="f84" line="129" const="1" inline="1" mangled="_ZNK6gp_XYZ1ZEv"/>
+  <Method id="_5649" name="Modulus" returns="_173" context="_2093" access="public" location="f84:132" file="f84" line="132" const="1" inline="1" mangled="_ZNK6gp_XYZ7ModulusEv"/>
+  <Method id="_5650" name="SquareModulus" returns="_173" context="_2093" access="public" location="f84:135" file="f84" line="135" const="1" inline="1" mangled="_ZNK6gp_XYZ13SquareModulusEv"/>
+  <Method id="_5651" name="IsEqual" returns="_174" context="_2093" access="public" location="f84:143" file="f84" line="143" const="1" mangled="_ZNK6gp_XYZ7IsEqualERKS_d" attributes="dllexport">
+    <Argument name="theOther" type="_5767" location="f84:143" file="f84" line="143"/>
+    <Argument name="theTolerance" type="_173c" location="f84:144" file="f84" line="144"/>
   </Method>
-  <OperatorMethod id="_5653" name="+=" returns="_4602" context="_2093" access="public" location="f84:152" file="f84" line="152" inline="1" mangled="_ZN6gp_XYZpLERKS_">
-    <Argument name="theOther" type="_5767" location="f84:152" file="f84" line="152"/>
+  <Method id="_5652" name="Add" returns="_4602" context="_2093" access="public" location="f84:151" file="f84" line="151" inline="1" mangled="_ZN6gp_XYZ3AddERKS_">
+    <Argument name="theOther" type="_5767" location="f84:151" file="f84" line="151"/>
+  </Method>
+  <OperatorMethod id="_5653" name="+=" returns="_4602" context="_2093" access="public" location="f84:158" file="f84" line="158" inline="1" mangled="_ZN6gp_XYZpLERKS_">
+    <Argument name="theOther" type="_5767" location="f84:158" file="f84" line="158"/>
   </OperatorMethod>
-  <Method id="_5654" name="Added" returns="_2093" context="_2093" access="public" location="f84:159" file="f84" line="159" const="1" inline="1" mangled="_ZNK6gp_XYZ5AddedERKS_">
-    <Argument name="theOther" type="_5767" location="f84:159" file="f84" line="159"/>
+  <Method id="_5654" name="Added" returns="_2093" context="_2093" access="public" location="f84:165" file="f84" line="165" const="1" inline="1" mangled="_ZNK6gp_XYZ5AddedERKS_">
+    <Argument name="theOther" type="_5767" location="f84:165" file="f84" line="165"/>
   </Method>
-  <OperatorMethod id="_5655" name="+" returns="_2093" context="_2093" access="public" location="f84:164" file="f84" line="164" const="1" inline="1" mangled="_ZNK6gp_XYZplERKS_">
-    <Argument name="theOther" type="_5767" location="f84:164" file="f84" line="164"/>
+  <OperatorMethod id="_5655" name="+" returns="_2093" context="_2093" access="public" location="f84:170" file="f84" line="170" const="1" inline="1" mangled="_ZNK6gp_XYZplERKS_">
+    <Argument name="theOther" type="_5767" location="f84:170" file="f84" line="170"/>
   </OperatorMethod>
-  <Method id="_5656" name="Cross" returns="_4602" context="_2093" access="public" location="f84:171" file="f84" line="171" mangled="_ZN6gp_XYZ5CrossERKS_">
-    <Argument name="theOther" type="_5767" location="f84:171" file="f84" line="171"/>
+  <Method id="_5656" name="Cross" returns="_4602" context="_2093" access="public" location="f84:177" file="f84" line="177" mangled="_ZN6gp_XYZ5CrossERKS_">
+    <Argument name="theOther" type="_5767" location="f84:177" file="f84" line="177"/>
   </Method>
-  <OperatorMethod id="_5657" name="^=" returns="_4602" context="_2093" access="public" location="f84:173" file="f84" line="173" inline="1" mangled="_ZN6gp_XYZeOERKS_">
-    <Argument name="theOther" type="_5767" location="f84:173" file="f84" line="173"/>
+  <OperatorMethod id="_5657" name="^=" returns="_4602" context="_2093" access="public" location="f84:179" file="f84" line="179" inline="1" mangled="_ZN6gp_XYZeOERKS_">
+    <Argument name="theOther" type="_5767" location="f84:179" file="f84" line="179"/>
   </OperatorMethod>
-  <Method id="_5658" name="Crossed" returns="_2093" context="_2093" access="public" location="f84:180" file="f84" line="180" const="1" inline="1" mangled="_ZNK6gp_XYZ7CrossedERKS_">
-    <Argument name="theOther" type="_5767" location="f84:180" file="f84" line="180"/>
+  <Method id="_5658" name="Crossed" returns="_2093" context="_2093" access="public" location="f84:186" file="f84" line="186" const="1" inline="1" mangled="_ZNK6gp_XYZ7CrossedERKS_">
+    <Argument name="theOther" type="_5767" location="f84:186" file="f84" line="186"/>
   </Method>
-  <OperatorMethod id="_5659" name="^" returns="_2093" context="_2093" access="public" location="f84:187" file="f84" line="187" const="1" inline="1" mangled="_ZNK6gp_XYZeoERKS_">
-    <Argument name="theOther" type="_5767" location="f84:187" file="f84" line="187"/>
+  <OperatorMethod id="_5659" name="^" returns="_2093" context="_2093" access="public" location="f84:193" file="f84" line="193" const="1" inline="1" mangled="_ZNK6gp_XYZeoERKS_">
+    <Argument name="theOther" type="_5767" location="f84:193" file="f84" line="193"/>
   </OperatorMethod>
-  <Method id="_5660" name="CrossMagnitude" returns="_173" context="_2093" access="public" location="f84:191" file="f84" line="191" const="1" mangled="_ZNK6gp_XYZ14CrossMagnitudeERKS_">
-    <Argument name="theRight" type="_5767" location="f84:191" file="f84" line="191"/>
+  <Method id="_5660" name="CrossMagnitude" returns="_173" context="_2093" access="public" location="f84:197" file="f84" line="197" const="1" mangled="_ZNK6gp_XYZ14CrossMagnitudeERKS_">
+    <Argument name="theRight" type="_5767" location="f84:197" file="f84" line="197"/>
   </Method>
-  <Method id="_5661" name="CrossSquareMagnitude" returns="_173" context="_2093" access="public" location="f84:195" file="f84" line="195" const="1" mangled="_ZNK6gp_XYZ20CrossSquareMagnitudeERKS_">
-    <Argument name="theRight" type="_5767" location="f84:195" file="f84" line="195"/>
+  <Method id="_5661" name="CrossSquareMagnitude" returns="_173" context="_2093" access="public" location="f84:201" file="f84" line="201" const="1" mangled="_ZNK6gp_XYZ20CrossSquareMagnitudeERKS_">
+    <Argument name="theRight" type="_5767" location="f84:201" file="f84" line="201"/>
   </Method>
-  <Method id="_5662" name="CrossCross" returns="_4602" context="_2093" access="public" location="f84:199" file="f84" line="199" mangled="_ZN6gp_XYZ10CrossCrossERKS_S1_">
-    <Argument name="theCoord1" type="_5767" location="f84:199" file="f84" line="199"/>
-    <Argument name="theCoord2" type="_5767" location="f84:199" file="f84" line="199"/>
+  <Method id="_5662" name="CrossCross" returns="_4602" context="_2093" access="public" location="f84:205" file="f84" line="205" mangled="_ZN6gp_XYZ10CrossCrossERKS_S1_">
+    <Argument name="theCoord1" type="_5767" location="f84:205" file="f84" line="205"/>
+    <Argument name="theCoord2" type="_5767" location="f84:205" file="f84" line="205"/>
   </Method>
-  <Method id="_5663" name="CrossCrossed" returns="_2093" context="_2093" access="public" location="f84:203" file="f84" line="203" const="1" inline="1" mangled="_ZNK6gp_XYZ12CrossCrossedERKS_S1_">
-    <Argument name="theCoord1" type="_5767" location="f84:203" file="f84" line="203"/>
-    <Argument name="theCoord2" type="_5767" location="f84:203" file="f84" line="203"/>
+  <Method id="_5663" name="CrossCrossed" returns="_2093" context="_2093" access="public" location="f84:209" file="f84" line="209" const="1" inline="1" mangled="_ZNK6gp_XYZ12CrossCrossedERKS_S1_">
+    <Argument name="theCoord1" type="_5767" location="f84:209" file="f84" line="209"/>
+    <Argument name="theCoord2" type="_5767" location="f84:209" file="f84" line="209"/>
   </Method>
-  <Method id="_5664" name="Divide" returns="_4602" context="_2093" access="public" location="f84:211" file="f84" line="211" inline="1" mangled="_ZN6gp_XYZ6DivideEd">
-    <Argument name="theScalar" type="_173c" location="f84:211" file="f84" line="211"/>
+  <Method id="_5664" name="Divide" returns="_4602" context="_2093" access="public" location="f84:217" file="f84" line="217" inline="1" mangled="_ZN6gp_XYZ6DivideEd">
+    <Argument name="theScalar" type="_173c" location="f84:217" file="f84" line="217"/>
   </Method>
-  <OperatorMethod id="_5665" name="/=" returns="_4602" context="_2093" access="public" location="f84:218" file="f84" line="218" inline="1" mangled="_ZN6gp_XYZdVEd">
-    <Argument name="theScalar" type="_173c" location="f84:218" file="f84" line="218"/>
+  <OperatorMethod id="_5665" name="/=" returns="_4602" context="_2093" access="public" location="f84:224" file="f84" line="224" inline="1" mangled="_ZN6gp_XYZdVEd">
+    <Argument name="theScalar" type="_173c" location="f84:224" file="f84" line="224"/>
   </OperatorMethod>
-  <Method id="_5666" name="Divided" returns="_2093" context="_2093" access="public" location="f84:221" file="f84" line="221" const="1" inline="1" mangled="_ZNK6gp_XYZ7DividedEd">
-    <Argument name="theScalar" type="_173c" location="f84:221" file="f84" line="221"/>
+  <Method id="_5666" name="Divided" returns="_2093" context="_2093" access="public" location="f84:227" file="f84" line="227" const="1" inline="1" mangled="_ZNK6gp_XYZ7DividedEd">
+    <Argument name="theScalar" type="_173c" location="f84:227" file="f84" line="227"/>
   </Method>
-  <OperatorMethod id="_5667" name="/" returns="_2093" context="_2093" access="public" location="f84:226" file="f84" line="226" const="1" inline="1" mangled="_ZNK6gp_XYZdvEd">
-    <Argument name="theScalar" type="_173c" location="f84:226" file="f84" line="226"/>
+  <OperatorMethod id="_5667" name="/" returns="_2093" context="_2093" access="public" location="f84:232" file="f84" line="232" const="1" inline="1" mangled="_ZNK6gp_XYZdvEd">
+    <Argument name="theScalar" type="_173c" location="f84:232" file="f84" line="232"/>
   </OperatorMethod>
-  <Method id="_5668" name="Dot" returns="_173" context="_2093" access="public" location="f84:232" file="f84" line="232" const="1" inline="1" mangled="_ZNK6gp_XYZ3DotERKS_">
-    <Argument name="theOther" type="_5767" location="f84:232" file="f84" line="232"/>
+  <Method id="_5668" name="Dot" returns="_173" context="_2093" access="public" location="f84:238" file="f84" line="238" const="1" inline="1" mangled="_ZNK6gp_XYZ3DotERKS_">
+    <Argument name="theOther" type="_5767" location="f84:238" file="f84" line="238"/>
   </Method>
-  <OperatorMethod id="_5669" name="*" returns="_173" context="_2093" access="public" location="f84:237" file="f84" line="237" const="1" inline="1" mangled="_ZNK6gp_XYZmlERKS_">
-    <Argument name="theOther" type="_5767" location="f84:237" file="f84" line="237"/>
+  <OperatorMethod id="_5669" name="*" returns="_173" context="_2093" access="public" location="f84:243" file="f84" line="243" const="1" inline="1" mangled="_ZNK6gp_XYZmlERKS_">
+    <Argument name="theOther" type="_5767" location="f84:243" file="f84" line="243"/>
   </OperatorMethod>
-  <Method id="_5670" name="DotCross" returns="_173" context="_2093" access="public" location="f84:240" file="f84" line="240" const="1" mangled="_ZNK6gp_XYZ8DotCrossERKS_S1_">
-    <Argument name="theCoord1" type="_5767" location="f84:240" file="f84" line="240"/>
-    <Argument name="theCoord2" type="_5767" location="f84:240" file="f84" line="240"/>
+  <Method id="_5670" name="DotCross" returns="_173" context="_2093" access="public" location="f84:246" file="f84" line="246" const="1" mangled="_ZNK6gp_XYZ8DotCrossERKS_S1_">
+    <Argument name="theCoord1" type="_5767" location="f84:246" file="f84" line="246"/>
+    <Argument name="theCoord2" type="_5767" location="f84:246" file="f84" line="246"/>
   </Method>
-  <Method id="_5671" name="Multiply" returns="_4602" context="_2093" access="public" location="f84:247" file="f84" line="247" inline="1" mangled="_ZN6gp_XYZ8MultiplyEd">
-    <Argument name="theScalar" type="_173c" location="f84:247" file="f84" line="247"/>
+  <Method id="_5671" name="Multiply" returns="_4602" context="_2093" access="public" location="f84:253" file="f84" line="253" inline="1" mangled="_ZN6gp_XYZ8MultiplyEd">
+    <Argument name="theScalar" type="_173c" location="f84:253" file="f84" line="253"/>
   </Method>
-  <OperatorMethod id="_5672" name="*=" returns="_4602" context="_2093" access="public" location="f84:254" file="f84" line="254" inline="1" mangled="_ZN6gp_XYZmLEd">
-    <Argument name="theScalar" type="_173c" location="f84:254" file="f84" line="254"/>
+  <OperatorMethod id="_5672" name="*=" returns="_4602" context="_2093" access="public" location="f84:260" file="f84" line="260" inline="1" mangled="_ZN6gp_XYZmLEd">
+    <Argument name="theScalar" type="_173c" location="f84:260" file="f84" line="260"/>
   </OperatorMethod>
-  <Method id="_5673" name="Multiply" returns="_4602" context="_2093" access="public" location="f84:261" file="f84" line="261" inline="1" mangled="_ZN6gp_XYZ8MultiplyERKS_">
-    <Argument name="theOther" type="_5767" location="f84:261" file="f84" line="261"/>
+  <Method id="_5673" name="Multiply" returns="_4602" context="_2093" access="public" location="f84:267" file="f84" line="267" inline="1" mangled="_ZN6gp_XYZ8MultiplyERKS_">
+    <Argument name="theOther" type="_5767" location="f84:267" file="f84" line="267"/>
   </Method>
-  <OperatorMethod id="_5674" name="*=" returns="_4602" context="_2093" access="public" location="f84:268" file="f84" line="268" inline="1" mangled="_ZN6gp_XYZmLERKS_">
-    <Argument name="theOther" type="_5767" location="f84:268" file="f84" line="268"/>
+  <OperatorMethod id="_5674" name="*=" returns="_4602" context="_2093" access="public" location="f84:274" file="f84" line="274" inline="1" mangled="_ZN6gp_XYZmLERKS_">
+    <Argument name="theOther" type="_5767" location="f84:274" file="f84" line="274"/>
   </OperatorMethod>
-  <Method id="_5675" name="Multiply" returns="_4602" context="_2093" access="public" location="f84:271" file="f84" line="271" mangled="_ZN6gp_XYZ8MultiplyERK6gp_Mat">
-    <Argument name="theMatrix" type="_5766" location="f84:271" file="f84" line="271"/>
+  <Method id="_5675" name="Multiply" returns="_4602" context="_2093" access="public" location="f84:277" file="f84" line="277" mangled="_ZN6gp_XYZ8MultiplyERK6gp_Mat">
+    <Argument name="theMatrix" type="_5766" location="f84:277" file="f84" line="277"/>
   </Method>
-  <OperatorMethod id="_5676" name="*=" returns="_4602" context="_2093" access="public" location="f84:273" file="f84" line="273" inline="1" mangled="_ZN6gp_XYZmLERK6gp_Mat">
-    <Argument name="theMatrix" type="_5766" location="f84:273" file="f84" line="273"/>
+  <OperatorMethod id="_5676" name="*=" returns="_4602" context="_2093" access="public" location="f84:279" file="f84" line="279" inline="1" mangled="_ZN6gp_XYZmLERK6gp_Mat">
+    <Argument name="theMatrix" type="_5766" location="f84:279" file="f84" line="279"/>
   </OperatorMethod>
-  <Method id="_5677" name="Multiplied" returns="_2093" context="_2093" access="public" location="f84:280" file="f84" line="280" const="1" inline="1" mangled="_ZNK6gp_XYZ10MultipliedEd">
-    <Argument name="theScalar" type="_173c" location="f84:280" file="f84" line="280"/>
+  <Method id="_5677" name="Multiplied" returns="_2093" context="_2093" access="public" location="f84:286" file="f84" line="286" const="1" inline="1" mangled="_ZNK6gp_XYZ10MultipliedEd">
+    <Argument name="theScalar" type="_173c" location="f84:286" file="f84" line="286"/>
   </Method>
-  <OperatorMethod id="_5678" name="*" returns="_2093" context="_2093" access="public" location="f84:285" file="f84" line="285" const="1" inline="1" mangled="_ZNK6gp_XYZmlEd">
-    <Argument name="theScalar" type="_173c" location="f84:285" file="f84" line="285"/>
+  <OperatorMethod id="_5678" name="*" returns="_2093" context="_2093" access="public" location="f84:291" file="f84" line="291" const="1" inline="1" mangled="_ZNK6gp_XYZmlEd">
+    <Argument name="theScalar" type="_173c" location="f84:291" file="f84" line="291"/>
   </OperatorMethod>
-  <Method id="_5679" name="Multiplied" returns="_2093" context="_2093" access="public" location="f84:295" file="f84" line="295" const="1" inline="1" mangled="_ZNK6gp_XYZ10MultipliedERKS_">
-    <Argument name="theOther" type="_5767" location="f84:295" file="f84" line="295"/>
+  <Method id="_5679" name="Multiplied" returns="_2093" context="_2093" access="public" location="f84:301" file="f84" line="301" const="1" inline="1" mangled="_ZNK6gp_XYZ10MultipliedERKS_">
+    <Argument name="theOther" type="_5767" location="f84:301" file="f84" line="301"/>
   </Method>
-  <Method id="_5680" name="Multiplied" returns="_2093" context="_2093" access="public" location="f84:301" file="f84" line="301" const="1" inline="1" mangled="_ZNK6gp_XYZ10MultipliedERK6gp_Mat">
-    <Argument name="theMatrix" type="_5766" location="f84:301" file="f84" line="301"/>
+  <Method id="_5680" name="Multiplied" returns="_2093" context="_2093" access="public" location="f84:307" file="f84" line="307" const="1" inline="1" mangled="_ZNK6gp_XYZ10MultipliedERK6gp_Mat">
+    <Argument name="theMatrix" type="_5766" location="f84:307" file="f84" line="307"/>
   </Method>
-  <OperatorMethod id="_5681" name="*" returns="_2093" context="_2093" access="public" location="f84:309" file="f84" line="309" const="1" inline="1" mangled="_ZNK6gp_XYZmlERK6gp_Mat">
-    <Argument name="theMatrix" type="_5766" location="f84:309" file="f84" line="309"/>
+  <OperatorMethod id="_5681" name="*" returns="_2093" context="_2093" access="public" location="f84:315" file="f84" line="315" const="1" inline="1" mangled="_ZNK6gp_XYZmlERK6gp_Mat">
+    <Argument name="theMatrix" type="_5766" location="f84:315" file="f84" line="315"/>
   </OperatorMethod>
-  <Method id="_5682" name="Normalize" returns="_4602" context="_2093" access="public" location="f84:320" file="f84" line="320" mangled="_ZN6gp_XYZ9NormalizeEv"/>
-  <Method id="_5683" name="Normalized" returns="_2093" context="_2093" access="public" location="f84:328" file="f84" line="328" const="1" inline="1" mangled="_ZNK6gp_XYZ10NormalizedEv"/>
-  <Method id="_5684" name="Reverse" returns="_4602" context="_2093" access="public" location="f84:341" file="f84" line="341" inline="1" mangled="_ZN6gp_XYZ7ReverseEv"/>
-  <Method id="_5685" name="Reversed" returns="_2093" context="_2093" access="public" location="f84:353" file="f84" line="353" const="1" inline="1" mangled="_ZNK6gp_XYZ8ReversedEv"/>
-  <Method id="_5686" name="Subtract" returns="_4602" context="_2093" access="public" location="f84:360" file="f84" line="360" inline="1" mangled="_ZN6gp_XYZ8SubtractERKS_">
-    <Argument name="theOther" type="_5767" location="f84:360" file="f84" line="360"/>
+  <Method id="_5682" name="Normalize" returns="_4602" context="_2093" access="public" location="f84:326" file="f84" line="326" mangled="_ZN6gp_XYZ9NormalizeEv"/>
+  <Method id="_5683" name="Normalized" returns="_2093" context="_2093" access="public" location="f84:334" file="f84" line="334" const="1" inline="1" mangled="_ZNK6gp_XYZ10NormalizedEv"/>
+  <Method id="_5684" name="Reverse" returns="_4602" context="_2093" access="public" location="f84:347" file="f84" line="347" inline="1" mangled="_ZN6gp_XYZ7ReverseEv"/>
+  <Method id="_5685" name="Reversed" returns="_2093" context="_2093" access="public" location="f84:359" file="f84" line="359" const="1" inline="1" mangled="_ZNK6gp_XYZ8ReversedEv"/>
+  <Method id="_5686" name="Subtract" returns="_4602" context="_2093" access="public" location="f84:366" file="f84" line="366" inline="1" mangled="_ZN6gp_XYZ8SubtractERKS_">
+    <Argument name="theOther" type="_5767" location="f84:366" file="f84" line="366"/>
   </Method>
-  <OperatorMethod id="_5687" name="-=" returns="_4602" context="_2093" access="public" location="f84:367" file="f84" line="367" inline="1" mangled="_ZN6gp_XYZmIERKS_">
-    <Argument name="theOther" type="_5767" location="f84:367" file="f84" line="367"/>
+  <OperatorMethod id="_5687" name="-=" returns="_4602" context="_2093" access="public" location="f84:373" file="f84" line="373" inline="1" mangled="_ZN6gp_XYZmIERKS_">
+    <Argument name="theOther" type="_5767" location="f84:373" file="f84" line="373"/>
   </OperatorMethod>
-  <Method id="_5688" name="Subtracted" returns="_2093" context="_2093" access="public" location="f84:374" file="f84" line="374" const="1" inline="1" mangled="_ZNK6gp_XYZ10SubtractedERKS_">
-    <Argument name="theOther" type="_5767" location="f84:374" file="f84" line="374"/>
+  <Method id="_5688" name="Subtracted" returns="_2093" context="_2093" access="public" location="f84:380" file="f84" line="380" const="1" inline="1" mangled="_ZNK6gp_XYZ10SubtractedERKS_">
+    <Argument name="theOther" type="_5767" location="f84:380" file="f84" line="380"/>
   </Method>
-  <OperatorMethod id="_5689" name="-" returns="_2093" context="_2093" access="public" location="f84:379" file="f84" line="379" const="1" inline="1" mangled="_ZNK6gp_XYZmiERKS_">
-    <Argument name="theOther" type="_5767" location="f84:379" file="f84" line="379"/>
+  <OperatorMethod id="_5689" name="-" returns="_2093" context="_2093" access="public" location="f84:385" file="f84" line="385" const="1" inline="1" mangled="_ZNK6gp_XYZmiERKS_">
+    <Argument name="theOther" type="_5767" location="f84:385" file="f84" line="385"/>
   </OperatorMethod>
-  <Method id="_5690" name="SetLinearForm" returns="_4602" context="_2093" access="public" location="f84:385" file="f84" line="385" inline="1" mangled="_ZN6gp_XYZ13SetLinearFormEdRKS_dS1_dS1_S1_">
-    <Argument name="theA1" type="_173c" location="f84:385" file="f84" line="385"/>
-    <Argument name="theXYZ1" type="_5767" location="f84:386" file="f84" line="386"/>
-    <Argument name="theA2" type="_173c" location="f84:387" file="f84" line="387"/>
-    <Argument name="theXYZ2" type="_5767" location="f84:388" file="f84" line="388"/>
-    <Argument name="theA3" type="_173c" location="f84:389" file="f84" line="389"/>
-    <Argument name="theXYZ3" type="_5767" location="f84:390" file="f84" line="390"/>
-    <Argument name="theXYZ4" type="_5767" location="f84:391" file="f84" line="391"/>
+  <Method id="_5690" name="SetLinearForm" returns="_4602" context="_2093" access="public" location="f84:391" file="f84" line="391" inline="1" mangled="_ZN6gp_XYZ13SetLinearFormEdRKS_dS1_dS1_S1_">
+    <Argument name="theA1" type="_173c" location="f84:391" file="f84" line="391"/>
+    <Argument name="theXYZ1" type="_5767" location="f84:392" file="f84" line="392"/>
+    <Argument name="theA2" type="_173c" location="f84:393" file="f84" line="393"/>
+    <Argument name="theXYZ2" type="_5767" location="f84:394" file="f84" line="394"/>
+    <Argument name="theA3" type="_173c" location="f84:395" file="f84" line="395"/>
+    <Argument name="theXYZ3" type="_5767" location="f84:396" file="f84" line="396"/>
+    <Argument name="theXYZ4" type="_5767" location="f84:397" file="f84" line="397"/>
   </Method>
-  <Method id="_5691" name="SetLinearForm" returns="_4602" context="_2093" access="public" location="f84:402" file="f84" line="402" inline="1" mangled="_ZN6gp_XYZ13SetLinearFormEdRKS_dS1_dS1_">
-    <Argument name="theA1" type="_173c" location="f84:402" file="f84" line="402"/>
-    <Argument name="theXYZ1" type="_5767" location="f84:403" file="f84" line="403"/>
-    <Argument name="theA2" type="_173c" location="f84:404" file="f84" line="404"/>
-    <Argument name="theXYZ2" type="_5767" location="f84:405" file="f84" line="405"/>
-    <Argument name="theA3" type="_173c" location="f84:406" file="f84" line="406"/>
-    <Argument name="theXYZ3" type="_5767" location="f84:407" file="f84" line="407"/>
+  <Method id="_5691" name="SetLinearForm" returns="_4602" context="_2093" access="public" location="f84:408" file="f84" line="408" inline="1" mangled="_ZN6gp_XYZ13SetLinearFormEdRKS_dS1_dS1_">
+    <Argument name="theA1" type="_173c" location="f84:408" file="f84" line="408"/>
+    <Argument name="theXYZ1" type="_5767" location="f84:409" file="f84" line="409"/>
+    <Argument name="theA2" type="_173c" location="f84:410" file="f84" line="410"/>
+    <Argument name="theXYZ2" type="_5767" location="f84:411" file="f84" line="411"/>
+    <Argument name="theA3" type="_173c" location="f84:412" file="f84" line="412"/>
+    <Argument name="theXYZ3" type="_5767" location="f84:413" file="f84" line="413"/>
   </Method>
-  <Method id="_5692" name="SetLinearForm" returns="_4602" context="_2093" access="public" location="f84:418" file="f84" line="418" inline="1" mangled="_ZN6gp_XYZ13SetLinearFormEdRKS_dS1_S1_">
-    <Argument name="theA1" type="_173c" location="f84:418" file="f84" line="418"/>
-    <Argument name="theXYZ1" type="_5767" location="f84:419" file="f84" line="419"/>
-    <Argument name="theA2" type="_173c" location="f84:420" file="f84" line="420"/>
-    <Argument name="theXYZ2" type="_5767" location="f84:421" file="f84" line="421"/>
-    <Argument name="theXYZ3" type="_5767" location="f84:422" file="f84" line="422"/>
+  <Method id="_5692" name="SetLinearForm" returns="_4602" context="_2093" access="public" location="f84:424" file="f84" line="424" inline="1" mangled="_ZN6gp_XYZ13SetLinearFormEdRKS_dS1_S1_">
+    <Argument name="theA1" type="_173c" location="f84:424" file="f84" line="424"/>
+    <Argument name="theXYZ1" type="_5767" location="f84:425" file="f84" line="425"/>
+    <Argument name="theA2" type="_173c" location="f84:426" file="f84" line="426"/>
+    <Argument name="theXYZ2" type="_5767" location="f84:427" file="f84" line="427"/>
+    <Argument name="theXYZ3" type="_5767" location="f84:428" file="f84" line="428"/>
   </Method>
-  <Method id="_5693" name="SetLinearForm" returns="_4602" context="_2093" access="public" location="f84:433" file="f84" line="433" inline="1" mangled="_ZN6gp_XYZ13SetLinearFormEdRKS_dS1_">
-    <Argument name="theA1" type="_173c" location="f84:433" file="f84" line="433"/>
-    <Argument name="theXYZ1" type="_5767" location="f84:434" file="f84" line="434"/>
-    <Argument name="theA2" type="_173c" location="f84:435" file="f84" line="435"/>
-    <Argument name="theXYZ2" type="_5767" location="f84:436" file="f84" line="436"/>
+  <Method id="_5693" name="SetLinearForm" returns="_4602" context="_2093" access="public" location="f84:439" file="f84" line="439" inline="1" mangled="_ZN6gp_XYZ13SetLinearFormEdRKS_dS1_">
+    <Argument name="theA1" type="_173c" location="f84:439" file="f84" line="439"/>
+    <Argument name="theXYZ1" type="_5767" location="f84:440" file="f84" line="440"/>
+    <Argument name="theA2" type="_173c" location="f84:441" file="f84" line="441"/>
+    <Argument name="theXYZ2" type="_5767" location="f84:442" file="f84" line="442"/>
   </Method>
-  <Method id="_5694" name="SetLinearForm" returns="_4602" context="_2093" access="public" location="f84:447" file="f84" line="447" inline="1" mangled="_ZN6gp_XYZ13SetLinearFormEdRKS_S1_">
-    <Argument name="theA1" type="_173c" location="f84:447" file="f84" line="447"/>
-    <Argument name="theXYZ1" type="_5767" location="f84:447" file="f84" line="447"/>
-    <Argument name="theXYZ2" type="_5767" location="f84:447" file="f84" line="447"/>
+  <Method id="_5694" name="SetLinearForm" returns="_4602" context="_2093" access="public" location="f84:453" file="f84" line="453" inline="1" mangled="_ZN6gp_XYZ13SetLinearFormEdRKS_S1_">
+    <Argument name="theA1" type="_173c" location="f84:453" file="f84" line="453"/>
+    <Argument name="theXYZ1" type="_5767" location="f84:453" file="f84" line="453"/>
+    <Argument name="theXYZ2" type="_5767" location="f84:453" file="f84" line="453"/>
   </Method>
-  <Method id="_5695" name="SetLinearForm" returns="_4602" context="_2093" access="public" location="f84:458" file="f84" line="458" inline="1" mangled="_ZN6gp_XYZ13SetLinearFormERKS_S1_">
-    <Argument name="theXYZ1" type="_5767" location="f84:458" file="f84" line="458"/>
-    <Argument name="theXYZ2" type="_5767" location="f84:458" file="f84" line="458"/>
+  <Method id="_5695" name="SetLinearForm" returns="_4602" context="_2093" access="public" location="f84:464" file="f84" line="464" inline="1" mangled="_ZN6gp_XYZ13SetLinearFormERKS_S1_">
+    <Argument name="theXYZ1" type="_5767" location="f84:464" file="f84" line="464"/>
+    <Argument name="theXYZ2" type="_5767" location="f84:464" file="f84" line="464"/>
   </Method>
-  <Method id="_5696" name="DumpJson" returns="_4602" context="_2093" access="public" location="f84:466" file="f84" line="466" const="1" mangled="_ZNK6gp_XYZ8DumpJsonERSoi" attributes="dllexport">
-    <Argument name="theOStream" type="_5535" location="f84:466" file="f84" line="466"/>
-    <Argument name="theDepth" type="_171" location="f84:466" file="f84" line="466" default="-1"/>
+  <Method id="_5696" name="DumpJson" returns="_4602" context="_2093" access="public" location="f84:472" file="f84" line="472" const="1" mangled="_ZNK6gp_XYZ8DumpJsonERSoi" attributes="dllexport">
+    <Argument name="theOStream" type="_5535" location="f84:472" file="f84" line="472"/>
+    <Argument name="theDepth" type="_171" location="f84:472" file="f84" line="472" default="-1"/>
   </Method>
-  <Method id="_5697" name="InitFromJson" returns="_174" context="_2093" access="public" location="f84:469" file="f84" line="469" mangled="_ZN6gp_XYZ12InitFromJsonERKNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEERi" attributes="dllexport">
-    <Argument name="theSStream" type="_19649" location="f84:469" file="f84" line="469"/>
-    <Argument name="theStreamPos" type="_19650" location="f84:470" file="f84" line="470"/>
+  <Method id="_5697" name="InitFromJson" returns="_174" context="_2093" access="public" location="f84:475" file="f84" line="475" mangled="_ZN6gp_XYZ12InitFromJsonERKNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEERi" attributes="dllexport">
+    <Argument name="theSStream" type="_19649" location="f84:475" file="f84" line="475"/>
+    <Argument name="theStreamPos" type="_19650" location="f84:476" file="f84" line="476"/>
   </Method>
-  <Field id="_5698" name="x" type="_173" context="_2093" access="private" location="f84:473" file="f84" line="473" offset="0"/>
-  <Field id="_5699" name="y" type="_173" context="_2093" access="private" location="f84:474" file="f84" line="474" offset="64"/>
-  <Field id="_5700" name="z" type="_173" context="_2093" access="private" location="f84:475" file="f84" line="475" offset="128"/>
-  <Constructor id="_5701" name="gp_XYZ" context="_2093" access="public" location="f84:31" file="f84" line="31" inline="1" artificial="1">
-    <Argument type="_5767" location="f84:31" file="f84" line="31"/>
+  <Field id="_5698" name="x" type="_173" context="_2093" access="private" location="f84:479" file="f84" line="479" offset="0"/>
+  <Field id="_5699" name="y" type="_173" context="_2093" access="private" location="f84:480" file="f84" line="480" offset="64"/>
+  <Field id="_5700" name="z" type="_173" context="_2093" access="private" location="f84:481" file="f84" line="481" offset="128"/>
+  <Constructor id="_5701" name="gp_XYZ" context="_2093" access="public" location="f84:34" file="f84" line="34" inline="1" artificial="1">
+    <Argument type="_5767" location="f84:34" file="f84" line="34"/>
   </Constructor>
-  <Destructor id="_5702" name="gp_XYZ" context="_2093" access="public" location="f84:31" file="f84" line="31" inline="1" artificial="1"/>
-  <OperatorMethod id="_5703" name="=" returns="_19644" context="_2093" access="public" location="f84:31" file="f84" line="31" inline="1" artificial="1" mangled="_ZN6gp_XYZaSERKS_">
-    <Argument type="_5767" location="f84:31" file="f84" line="31"/>
+  <Destructor id="_5702" name="gp_XYZ" context="_2093" access="public" location="f84:34" file="f84" line="34" inline="1" artificial="1"/>
+  <OperatorMethod id="_5703" name="=" returns="_19644" context="_2093" access="public" location="f84:34" file="f84" line="34" inline="1" artificial="1" mangled="_ZN6gp_XYZaSERKS_">
+    <Argument type="_5767" location="f84:34" file="f84" line="34"/>
   </OperatorMethod>
   <OperatorMethod id="_5704" name="new" returns="_4742" context="_2094" access="public" location="f85:30" file="f85" line="30" static="1" inline="1" mangled="_ZN6gp_MatnwEy">
     <Argument name="theSize" type="_12" location="f85:30" file="f85" line="30"/>
@@ -52791,7 +52791,7 @@
   <File id="f68" name="C:/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/14.2.0/../../../../include/c++/14.2.0/cstring"/>
   <File id="f69" name="D:\OCCTCAD\MirroredHeaders\gp_Pnt.hxx"/>
   <File id="f70" name="D:\OCCT\opencascade-7.9.2-vc14-64\inc/gp_Dir.hxx"/>
-  <File id="f71" name="D:\OCCT\opencascade-7.9.2-vc14-64\inc/gp_Ax1.hxx"/>
+  <File id="f71" name="D:\OCCTCAD\MirroredHeaders/gp_Ax1.hxx"/>
   <File id="f72" name="D:\OCCT\opencascade-7.9.2-vc14-64\inc/gp_Ax2.hxx"/>
   <File id="f73" name="D:\OCCT\opencascade-7.9.2-vc14-64\inc/gp_Pnt2d.hxx"/>
   <File id="f74" name="D:\OCCT\opencascade-7.9.2-vc14-64\inc/gp_Dir2d.hxx"/>
@@ -52804,7 +52804,7 @@
   <File id="f81" name="D:\OCCT\opencascade-7.9.2-vc14-64\inc/Standard_RangeError.hxx"/>
   <File id="f82" name="D:\OCCT\opencascade-7.9.2-vc14-64\inc/Standard_OutOfRange.hxx"/>
   <File id="f83" name="D:\OCCT\opencascade-7.9.2-vc14-64\inc/Standard_ConstructionError.hxx"/>
-  <File id="f84" name="D:\OCCT\opencascade-7.9.2-vc14-64\inc/gp_XYZ.hxx"/>
+  <File id="f84" name="D:\OCCTCAD\MirroredHeaders/gp_XYZ.hxx"/>
   <File id="f85" name="D:\OCCT\opencascade-7.9.2-vc14-64\inc/gp_Mat.hxx"/>
   <File id="f86" name="D:\OCCT\opencascade-7.9.2-vc14-64\inc/gp_Trsf.hxx"/>
   <File id="f87" name="D:\OCCT\opencascade-7.9.2-vc14-64\inc/gp_Vec.hxx"/>

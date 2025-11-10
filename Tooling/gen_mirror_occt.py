@@ -2,20 +2,21 @@ import os
 import re
 import shutil
 from datetime import datetime
+import config
 
 # --- 配置 ---
 # 请确保此路径指向您的 OCCT 头文件根目录
-OCCT_INC_PATH = r'D:\OCCT\opencascade-7.9.2-vc14-64\inc'
-CLASS_LIST_FILE = 'class_list.txt'
+OCCT_INC_PATH = config.OCCT_INC_PATH
+CLASS_LIST_FILE = config.CLASS_LIST_FILE
 
 # 确保 MIRRORED_DIR 使用脚本的绝对路径来计算相对位置
-MIRRORED_DIR = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'MirroredHeaders'))
+MIRRORED_DIR = config.MIRRORED_DIR
 
-ACCESSOR_CLASS_NAME = 'ReflectionAccessor'
+ACCESSOR_CLASS_NAME = config.ACCESSOR_CLASS_NAME
 FRIEND_DECLARATION = f"friend class {ACCESSOR_CLASS_NAME};"
 FORWARD_DECLARATION = f"class {ACCESSOR_CLASS_NAME};"
 INDENTATION = '    '
-LOG_FILE = os.path.join('log', 'mirror_log.txt')
+LOG_FILE = config.MIRROR_LOG_FILE
 
 
 def strip_comments(text):
@@ -188,7 +189,7 @@ def mirror_occt_headers():
 
     try:
         log_dir = os.path.dirname(LOG_FILE)
-        
+
         if log_dir:
             safe_mkdir(log_dir)
 

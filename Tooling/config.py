@@ -27,5 +27,6 @@ ACCESSOR_CLASS_NAME = 'ReflectionAccessor'
 
 # --- 日志配置 ---
 CASTXML_LOG_FILE = os.path.join(TOOLING_DIR, 'log', 'generation_log.txt')
+MIRROR_LOG_FILE = os.path.join(TOOLING_DIR, 'log', 'mirror_log.txt')
 
 COMPILER_PATH = r"C:/msys64/ucrt64/bin/g++.exe"
