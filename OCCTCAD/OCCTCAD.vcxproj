@@ -135,13 +135,6 @@
       <AdditionalDependencies>TKernel.lib;TKMath.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="RTTR_Registration.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="ReflectionAccessor.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
