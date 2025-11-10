@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="OCCTCAD/OCCTCAD.vcxproj" Id="fdb787e5-4659-41e4-8390-7bf1ddb62f36" />
+</Solution>

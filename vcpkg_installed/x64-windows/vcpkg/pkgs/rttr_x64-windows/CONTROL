@@ -1,0 +1,8 @@
+Package: rttr
+Version: 0.9.6+20210811
+Port-Version: 1
+Depends: rapidjson, vcpkg-cmake, vcpkg-cmake-config
+Architecture: x64-windows
+Multi-Arch: same
+Abi: 451f8dba8dcef5e9cee0b100dcbd7664fc31c5d8ba8081c6af60b208b5b9ffda
+Description: an easy and intuitive way to use reflection in C++
