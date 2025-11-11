@@ -11,6 +11,7 @@
 #include <TopoDS_Solid.hxx>
 #include <TopoDS_CompSolid.hxx>
 #include <TopoDS_Compound.hxx>
+#include <TopoDS_Iterator.hxx>
 
 std::string shape_enum_to_string(TopAbs_ShapeEnum type) {
 	switch (type) {
@@ -84,11 +85,16 @@ int64_t OCCTSerializer::serialize_shape_recursive(const TopoDS_Shape& shape)
 	if (type_desc) {
 		std::any shape_any;
 
-		// 确保 TopoDS::Xyz() 函数的结果被正确放入 shape_any
 		switch (shape_type_enum) {
 		case TopAbs_VERTEX: shape_any = TopoDS::Vertex(shape); break;
 		case TopAbs_EDGE:   shape_any = TopoDS::Edge(shape);   break;
+		case TopAbs_WIRE:   shape_any = TopoDS::Wire(shape);   break;
 		case TopAbs_FACE:   shape_any = TopoDS::Face(shape);   break;
+		case TopAbs_SHELL:  shape_any = TopoDS::Shell(shape);  break;
+		case TopAbs_SOLID:  shape_any = TopoDS::Solid(shape);  break;
+		case TopAbs_COMPSOLID: shape_any = TopoDS::CompSolid(shape); break;
+		case TopAbs_COMPOUND:  shape_any = TopoDS::Compound(shape);  break;
+		default:            shape_any = shape; break;
 		}
 
 		for (const auto& [prop_name, prop_desc] : type_desc->properties) {
@@ -101,12 +107,40 @@ int64_t OCCTSerializer::serialize_shape_recursive(const TopoDS_Shape& shape)
 					std::cerr << "Error getting property '" << prop_name << "' for type '" << type_name << "': " << e.what() << std::endl;
 				}
 			}
-			// 我们将在下一步处理关系
 		}
 	}
 
 	m_graph.nodes.push_back(std::move(node));
-	return node.temp_id;
+	
+	TopoDS_Iterator it(shape);
+
+	for (; it.More(); it.Next()) {
+		const TopoDS_Shape& child_shape = it.Value();
+		int64_t child_node_id = serialize_shape_recursive(child_shape);
+		if (child_node_id != -1) {
+			std::string rel_name = "HAS_SUB_SHAPE";
+
+			TopAbs_ShapeEnum child_type = child_shape.ShapeType();
+			switch (child_type) {
+			case TopAbs_SHELL:   rel_name = "HAS_SHELL"; break;
+			case TopAbs_FACE:    rel_name = "HAS_FACE"; break;
+			case TopAbs_WIRE:    rel_name = "HAS_WIRE"; break;
+			case TopAbs_EDGE:    rel_name = "HAS_EDGE"; break;
+			case TopAbs_VERTEX:  rel_name = "HAS_VERTEX"; break;
+			case TopAbs_SOLID:   rel_name = "HAS_SOLID"; break;
+			default: break;
+			}
+
+			IntermediateRelationship rel;
+			rel.from_node_id = m_visited_shapes[tshape_ptr];
+			rel.to_node_id = child_node_id;
+			rel.relationship_name = rel_name;
+
+			m_graph.relationships.push_back(rel);
+		}
+	}
+
+	return m_visited_shapes[tshape_ptr];
 }
 
 int64_t OCCTSerializer::serialize_shape_recursive(const TopoDS_Shape& shape)
