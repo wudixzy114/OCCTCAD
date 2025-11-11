@@ -10,7 +10,7 @@
 #include <TopoDS_Shell.hxx>
 #include <TopoDS_Solid.hxx>
 #include <TopoDS_CompSolid.hxx>
-#include <TopoDS_Compound.hxx>
+#include <TopoDS_Compound.hxx> 
 #include <TopoDS_Iterator.hxx>
 
 std::string shape_enum_to_string(TopAbs_ShapeEnum type) {
@@ -78,7 +78,6 @@ int64_t OCCTSerializer::serialize_shape_recursive(const TopoDS_Shape& shape)
 	IntermediateNode node;
 	node.temp_id = m_next_temp_id++;
 	node.type_name = type_name;
-	// ����ҵ�����������ʹ������ neo4j_label������ʹ��������
 	node.neo4j_label = type_desc ? type_desc->neo4j_label : type_name;
 
 	m_visited_shapes[tshape_ptr] = node.temp_id;
@@ -184,23 +183,18 @@ void OCCTSerializer::serialize_recursize(const Handle(Standard_Transient)& objec
 
 std::any OCCTSerializer::covert_simple_type_to_any(const std::any& value) {
 	const auto& type = value.type();
-	// --- �� C++ ���� ---
 	if (type == typeid(int) || type == typeid(Standard_Integer)) return std::any_cast<int>(value);
 	if (type == typeid(double) || type == typeid(Standard_Real)) return std::any_cast<double>(value);
 	if (type == typeid(bool) || type == typeid(Standard_Boolean)) return std::any_cast<bool>(value);
 	if (type == typeid(TopAbs_Orientation) || type == typeid(TopAbs_ShapeEnum)) {
-		// ö�����Ϳ���ת��Ϊ�����洢
 		return static_cast<int>(std::any_cast<int>(value));
 	}
-	// --- OCCT �ַ������� ---
 	if (type == typeid(TCollection_AsciiString)) {
 		return std::string(std::any_cast<const TCollection_AsciiString&>(value).ToCString());
 	}
 
-	// --- OCCT ����ֵ���� (��Ϊ��������) ---
 	if (type == typeid(gp_Pnt)) {
 		const auto& p = std::any_cast<const gp_Pnt&>(value);
-		// ����ת��Ϊһ�� map������Ժ����׵ر����л�Ϊ JSON
 		std::unordered_map<std::string, double> pnt_map;
 		pnt_map["x"] = p.X();
 		pnt_map["y"] = p.Y();
