@@ -42,8 +42,71 @@ IntermediateGraph OCCTSerializer::serialize(const Handle(Standard_Transient)& ob
 }
 
 IntermediateGraph OCCTSerializer::serialize(const TopoDS_Shape& shape) {
-	Handle(TopoDS_TShape) tshape_handle = shape.TShape();
-	return this->serialize(tshape_handle);
+	m_graph = {};
+	m_visited_shapes.clear();
+	m_next_temp_id = 0;
+
+	if (!shape.IsNull()) {
+		serialize_shape_recursive(shape);
+	}
+
+	return m_graph;
+}
+
+int64_t OCCTSerializer::serialize_shape_recursive(const TopoDS_Shape& shape)
+{
+	if (shape.IsNull()) {
+		return -1;
+	}
+
+	const TopoDS_TShape* tshape_ptr = shape.TShape().get();
+	if (m_visited_shapes.count(tshape_ptr)) {
+		return m_visited_shapes.at(tshape_ptr);
+	}
+
+	TopAbs_ShapeEnum shape_type_enum = shape.ShapeType();
+	const std::string type_name = shape_enum_to_string(shape_type_enum);
+
+	const TypeDescriptor* type_desc = m_registry.get_type(type_name);
+	if (!type_desc) {
+		if (type_name != "TopoDS_Shape") {
+			std::cerr << "Warning: Type '" << type_name << "' not found in ReflectionRegistry. Skipping shape." << std::endl;
+		}
+	}
+
+	IntermediateNode node;
+	node.temp_id = m_next_temp_id++;
+	node.type_name = type_name;
+	// 如果找到了描述符，使用它的 neo4j_label，否则使用类型名
+	node.neo4j_label = type_desc ? type_desc->neo4j_label : type_name;
+
+	m_visited_shapes[tshape_ptr] = node.temp_id;
+	if (type_desc) {
+		std::any shape_any;
+
+		// 确保 TopoDS::Xyz() 函数的结果被正确放入 shape_any
+		switch (shape_type_enum) {
+		case TopAbs_VERTEX: shape_any = TopoDS::Vertex(shape); break;
+		case TopAbs_EDGE:   shape_any = TopoDS::Edge(shape);   break;
+		case TopAbs_FACE:   shape_any = TopoDS::Face(shape);   break;
+		}
+
+		for (const auto& [prop_name, prop_desc] : type_desc->properties) {
+			if (!prop_desc.is_relationship) {
+				try {
+					std::any prop_value = prop_desc.getter(shape_any);
+					node.properties[prop_name] = covert_simple_type_to_any(prop_value);
+				}
+				catch (const std::bad_any_cast& e) {
+					std::cerr << "Error getting property '" << prop_name << "' for type '" << type_name << "': " << e.what() << std::endl;
+				}
+			}
+			// 我们将在下一步处理关系
+		}
+	}
+
+	m_graph.nodes.push_back(std::move(node));
+	return node.temp_id;
 }
 
 int64_t OCCTSerializer::serialize_shape_recursive(const TopoDS_Shape& shape)
