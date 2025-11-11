@@ -1,3 +1,9 @@
+"""
+deprecated
+    This module is deprecated and will be removed in future versions.
+    Please use main.py instead.
+"""
+
 import os
 from pygccxml import declarations, utils, parser
 from datetime import datetime

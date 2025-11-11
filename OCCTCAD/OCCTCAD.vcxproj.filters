@@ -15,7 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="ManualReflection.h">
+      <Filter>头文件</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedReflection.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

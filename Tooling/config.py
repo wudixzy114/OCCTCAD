@@ -20,7 +20,7 @@ XML_FILE_PATH = os.path.join(GENERATED_DIR, 'occt_api.xml')
 # --- 输出文件 ---
 SOURCE_DIR = os.path.join(PROJECT_DIR, 'OCCTCAD')
 ACCESSOR_H_FILE = os.path.join(SOURCE_DIR, 'ReflectionAccessor.h')
-RTTR_CPP_FILE = os.path.join(SOURCE_DIR, 'RTTR_Registration.cpp')
+CUSTOM_REFLECTION_CPP_FILE = os.path.join(SOURCE_DIR, 'GeneratedReflection.cpp')
 
 # --- 反射配置 ---
 ACCESSOR_CLASS_NAME = 'ReflectionAccessor'
