@@ -157,7 +157,3 @@ void initialize_reflection() {
         registry.register_type(std::move(desc));
     }
 }
-
-int main() {
-
-}
