@@ -21,9 +21,24 @@
     <ClCompile Include="GeneratedReflection.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="OCCTSerializer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Neo4jAdapter.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Neo4jAdapter.h">
+      <Filter>头文件</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ReflectionAccessor.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="OCCTSerializer.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

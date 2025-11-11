@@ -257,7 +257,7 @@ class ReflectionGenerator:
                         f'            prop.getter = [] (const std::any& obj_any) -> std::any {{')
                     custom_reflection_lines.append(
                         f'                const auto& obj = std::any_cast<const {class_name}&>(obj_any);')
-                    custom_reflection_lines.append(f'                return {getter_name}(obj);')
+                    custom_reflection_lines.append(f'                return std::any({getter_name}(obj));')
                     custom_reflection_lines.append(f'            }};')
 
                     # --- 生成类型擦除的 Setter Lambda ---

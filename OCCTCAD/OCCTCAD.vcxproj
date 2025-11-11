@@ -20,9 +20,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GeneratedReflection.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="ManualReflection.h" />
+    <ClCompile Include="Neo4jAdapter.cpp" />
+    <ClCompile Include="Neo4jAdapter.h" />
+    <ClCompile Include="OCCTSerializer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="OCCTSerializer.h" />
     <ClInclude Include="ReflectionAccessor.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -66,15 +71,19 @@
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="OCCT_Paths.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="OCCT_Paths.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="OCCT_Paths.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="OCCT_Paths.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Label="Vcpkg">
@@ -114,15 +123,29 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpp23</LanguageStandard>
       <AdditionalIncludeDirectories>D:\OCCTCAD\MirroredHeaders;D:\OCCT\opencascade-7.9.2-vc14-64\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>D:\OCCT\opencascade-7.9.2-vc14-64\win64\vc14\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>TKernel.lib;TKMath.lib;TKG2d.lib;TKG3d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>TKernel.lib;TKMath.lib;TKG2d.lib;TKG3d.lib;TKBRep.lib;TKGeomBase.lib;TKGeomAlgo.lib;TKTopAlgo.lib;TKPrim.lib;TKBO.lib;TKBool.lib;TKShHealing.lib;TKFillet.lib;TKG2d.lib;TKG3d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>REM --- OCCT DLL Auto-Copy Script for Modular 3rdparty ---
+
+REM 1. 复制 OCCT 自身的核心 DLL 文件 (保持不变)
+xcopy /y /d "D:\OCCT\opencascade-7.9.2-vc14-64\win64\vc14\bin\*.dll" "$(OutDir)"
+
+REM 2. 遍历 3rdparty 目录下的每一个子目录 (package)，并复制其 bin 目录下的所有 DLL
+FOR /D %%G IN ("D:\OCCT\3rdparty-vc14-64\*") DO (
+    IF EXIST "%%G\bin\*.dll" (
+        echo Copying DLLs from %%G
+        xcopy /y /d "%%G\bin\*.dll" "$(OutDir)"
+    )
+)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -139,8 +162,22 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>D:\OCCT\opencascade-7.9.2-vc14-64\win64\vc14\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>TKernel.lib;TKMath.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>TKernel.lib;TKMath.lib;TKG2d.lib;TKG3d.lib;TKBRep.lib;TKGeomBase.lib;TKGeomAlgo.lib;TKTopAlgo.lib;TKPrim.lib;TKBO.lib;TKBool.lib;TKShHealing.lib;TKFillet.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>REM --- OCCT DLL Auto-Copy Script for Modular 3rdparty ---
+
+REM 1. 复制 OCCT 自身的核心 DLL 文件 (保持不变)
+xcopy /y /d "D:\OCCT\opencascade-7.9.2-vc14-64\win64\vc14\bin\*.dll" "$(OutDir)"
+
+REM 2. 遍历 3rdparty 目录下的每一个子目录 (package)，并复制其 bin 目录下的所有 DLL
+FOR /D %%G IN ("D:\OCCT\3rdparty-vc14-64\*") DO (
+    IF EXIST "%%G\bin\*.dll" (
+        echo Copying DLLs from %%G
+        xcopy /y /d "%%G\bin\*.dll" "$(OutDir)"
+    )
+)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

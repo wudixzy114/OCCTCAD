@@ -1,5 +1,29 @@
 gp_Pnt.hxx
 gp_Lin.hxx
-
 gp_XYZ.hxx
 gp_Ax1.hxx
+
+# 核心拓扑类型
+TopoDS_Shape.hxx
+TopoDS_TShape.hxx
+TopoDS_Vertex.hxx
+TopoDS_Edge.hxx
+TopoDS_Wire.hxx
+TopoDS_Face.hxx
+TopoDS_Shell.hxx
+TopoDS_Solid.hxx
+TopoDS_CompSolid.hxx
+TopoDS_Compound.hxx
+
+# 底层拓扑数据结构 (TShape)
+TopoDS_TVertex.hxx
+TopoDS_TEdge.hxx
+TopoDS_TWire.hxx
+TopoDS_TFace.hxx
+TopoDS_TShell.hxx
+TopoDS_TSolid.hxx
+TopoDS_TCompSolid.hxx
+TopoDS_TCompound.hxx
+
+# 位置信息
+TopLoc_Location.hxx
