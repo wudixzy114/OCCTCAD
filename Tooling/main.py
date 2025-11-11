@@ -6,6 +6,7 @@
 """
 
 import os
+import re
 import sys
 import tempfile
 from datetime import datetime
@@ -270,17 +271,52 @@ class ReflectionGenerator:
                     custom_reflection_lines.append(f'                {setter_name}(obj, val);')
                     custom_reflection_lines.append(f'            }};')
 
-                    # --- 关系推断 (逻辑不变) ---
-                    try:
-                        var_type_base = declarations.remove_declarated(
-                            declarations.remove_reference(declarations.remove_const(var.decl_type)))
-                        var_type_name_base = getattr(var_type_base, "decl_string", str(var_type_base)).split("::")[-1]
-                        if var_type_name_base in self.class_name_set:
-                            rel_name = f"HAS_{var_type_name_base.upper()}"
-                            custom_reflection_lines.append('            prop.is_relationship = true;')
-                            custom_reflection_lines.append(f'            prop.relationship_name = "{rel_name}";')
-                    except Exception:
-                        pass  # Ignore type parsing errors
+                    # --- 关系/属性推断 ---
+                    is_rel = False
+                    rel_name = ""
+
+                    # 规则 1: 检查是否是 Handle 类型
+                    # 匹配 Handle<...>, Handle(...) 和 Handle_...
+                    handle_match = re.search(r'Handle[(_<]\s*([_a-zA-Z0-9:]+)\s*[)>]', var_type_str_full, re.IGNORECASE)
+                    if not handle_match and 'Handle_' in var_type_str_full:
+                        # 尝试匹配 Handle_... 形式
+                        handle_match = re.search(r'Handle_([_a-zA-Z0-9:]+)', var_type_str_full)
+
+                    if handle_match:
+                        target_type = handle_match.group(1).strip().split("::")[-1]
+                        is_rel = True
+                        rel_name = f"HAS_{target_type.upper()}"
+                        print(
+                            f"DEBUG: '{class_name}::{var_name}' (type: {var_type_str_full}) -> MATCHED as Handle. Relationship to: {target_type}")
+                    else:
+                        # 规则 2: 如果不是 Handle，检查是否是值类型或原生类型
+                        try:
+                            var_type_base = declarations.remove_declarated(
+                                declarations.remove_reference(declarations.remove_const(var.decl_type)))
+                            var_type_name_base = getattr(var_type_base, "decl_string",
+                                                         str(var_type_base)).strip().lstrip('::')
+
+                            if var_type_name_base in config.VALUE_TYPES:
+                                print(
+                                    f"DEBUG: '{class_name}::{var_name}' (base type: {var_type_name_base}) -> MATCHED as Value Type.")
+                            elif var_type_name_base in config.PRIMITIVE_TYPES:
+                                print(
+                                    f"DEBUG: '{class_name}::{var_name}' (base type: {var_type_name_base}) -> MATCHED as Primitive Type.")
+                            else:
+                                print(
+                                    f"DEBUG: '{class_name}::{var_name}' (base type: {var_type_name_base}) -> NO MATCH. Defaulting to attribute.")
+                            is_rel = False  # 无论是 Value 还是 Primitive 还是 No Match，都不是关系
+                        except Exception as e_inner:
+                            print(
+                                f"DEBUG: Type parsing failed for '{class_name}::{var_name}'. Defaulting to attribute. Error: {e_inner}")
+                            is_rel = False
+
+                    # 根据推断结果生成代码
+                    if is_rel:
+                        custom_reflection_lines.append('            prop.is_relationship = true;')
+                        custom_reflection_lines.append(f'            prop.relationship_name = "{rel_name}";')
+                    else:
+                        custom_reflection_lines.append('            prop.is_relationship = false;')
 
                     custom_reflection_lines.append(f'            desc.properties["{prop_name}"] = std::move(prop);')
                     custom_reflection_lines.append(f'        }}')

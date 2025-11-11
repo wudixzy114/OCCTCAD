@@ -37,12 +37,16 @@ public:
 	IntermediateGraph serialize(const TopoDS_Shape& shape);
 
 private:
+	int64_t serialize_shape_recursive(const TopoDS_Shape& shape);
+
 	void serialize_recursize(const Handle(Standard_Transient)& object);
+
 	std::any covert_simple_type_to_any(const std::any& value);
 
 	const ReflectionRegistry& m_registry;
 	IntermediateGraph m_graph;
 
+	std::unordered_map<const TopoDS_TShape*, int64_t> m_visited_shapes;
 	std::unordered_map<Standard_Transient*, int64_t> m_visited_objects;
 	int64_t m_next_temp_id = 0;
 };

@@ -1,11 +1,18 @@
-gp_Pnt.hxx
-gp_Lin.hxx
-gp_XYZ.hxx
-gp_Ax1.hxx
+# --- Phase 1: Geometry & Topology ---
 
-# 核心拓扑类型
+# Geometric Primitives (Value Types)
+gp_Pnt.hxx
+gp_Dir.hxx
+gp_Vec.hxx
+gp_Ax1.hxx
+gp_Ax2.hxx
+gp_Ax3.hxx
+gp_XYZ.hxx
+gp_Trsf.hxx
+gp_Quaternion.hxx
+
+# Topological Data Structure (Entity Types)
 TopoDS_Shape.hxx
-TopoDS_TShape.hxx
 TopoDS_Vertex.hxx
 TopoDS_Edge.hxx
 TopoDS_Wire.hxx
@@ -15,15 +22,6 @@ TopoDS_Solid.hxx
 TopoDS_CompSolid.hxx
 TopoDS_Compound.hxx
 
-# 底层拓扑数据结构 (TShape)
-TopoDS_TVertex.hxx
-TopoDS_TEdge.hxx
-TopoDS_TWire.hxx
-TopoDS_TFace.hxx
-TopoDS_TShell.hxx
-TopoDS_TSolid.hxx
-TopoDS_TCompSolid.hxx
-TopoDS_TCompound.hxx
-
-# 位置信息
+# TShape (Underlying Implementation of TopoDS_Shape)
+# We need access to their private members like 'myLocation'
 TopLoc_Location.hxx
