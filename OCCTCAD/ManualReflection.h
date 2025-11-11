@@ -27,6 +27,7 @@ struct TypeDescriptor {
 	std::string name;
 	std::string neo4j_label;
 	std::unordered_map<std::string, PropertyDescriptor> properties;
+	std::string relationship_name_as_child;
 };
 
 class ReflectionRegistry {

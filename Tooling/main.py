@@ -248,6 +248,11 @@ class ReflectionGenerator:
                     getter_name = f"{config.ACCESSOR_CLASS_NAME}::get_{func_suffix}"
                     setter_name = f"{config.ACCESSOR_CLASS_NAME}::set_{func_suffix}"
 
+                    if class_name.startswith("TopoDS_"):
+                        core_type_name = class_name.replace("TopoDS_", "")
+                        rel_name = f"HAS_{core_type_name.upper()}"
+                        custom_reflection_lines.append(f'        desc.relationship_name_as_child = "{rel_name}";')
+
                     custom_reflection_lines.append(f'        {{')
                     custom_reflection_lines.append(f'            PropertyDescriptor prop;')
                     custom_reflection_lines.append(f'            prop.name = "{prop_name}";')

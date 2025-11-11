@@ -1,32 +1,32 @@
+#include "ManualReflection.h"
 #include "OCCTSerializer.h"
 #include "Neo4jAdapter.h"
-#include <BRepPrimAPI_MakeBox.hxx> // 创建一个 OCCT 对象
+#include <BRepPrimAPI_MakeBox.hxx>
 #include <TopoDS_Shape.hxx>
+#include <iostream>
 
 int main() {
-    // 1. 初始化反射系统 (必须)
+    // 1. 初始化反射
     initialize_reflection();
 
-    // 2. 创建一个 OCCT 对象 (例如一个立方体)
-    TopoDS_Shape box_shape = BRepPrimAPI_MakeBox(10, 20, 30).Shape();
+    // 2. 创建一个简单的立方体 (Solid -> Shell -> 6 Faces -> ... -> Vertices)
+    TopoDS_Shape box = BRepPrimAPI_MakeBox(10.0, 20.0, 30.0).Shape();
 
-    // 3. 实例化序列化器
+    // 3. 序列化
     OCCTSerializer serializer(ReflectionRegistry::instance());
+    IntermediateGraph graph = serializer.serialize(box);
 
-    // 4. 序列化对象
-    IntermediateGraph graph = serializer.serialize(box_shape);
+    // 4. 输出统计信息
+    std::cout << "Serialization Complete!" << std::endl;
+    std::cout << "Nodes created: " << graph.nodes.size() << std::endl;
+    std::cout << "Relationships created: " << graph.relationships.size() << std::endl;
 
-    // 5. 生成数据库查询
+    // 5. 生成 Cypher (可选，用于调试)
     Neo4jAdapter adapter;
     std::vector<std::string> queries = adapter.generate_cypher_queries(graph);
-
-    // 6. 执行查询 (伪代码)
-    // for (const auto& query : queries) {
-    //     neo4j_connection.run(query, parameters);
-    // }
-
-    for (const auto& r : queries) {
-        std::cout << r << std::endl;
+    std::cout << "\nGenerated Cypher Query (Preview):" << std::endl;
+    if (!queries.empty()) {
+        std::cout << queries[0].substr(0, 500) << "..." << std::endl;
     }
 
     return 0;

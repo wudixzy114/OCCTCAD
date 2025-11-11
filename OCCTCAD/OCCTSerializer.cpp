@@ -78,7 +78,7 @@ int64_t OCCTSerializer::serialize_shape_recursive(const TopoDS_Shape& shape)
 	IntermediateNode node;
 	node.temp_id = m_next_temp_id++;
 	node.type_name = type_name;
-	// Èç¹ûÕÒµ½ÁËÃèÊö·û£¬Ê¹ÓÃËüµÄ neo4j_label£¬·ñÔòÊ¹ÓÃÀàÐÍÃû
+	// ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ neo4j_labelï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	node.neo4j_label = type_desc ? type_desc->neo4j_label : type_name;
 
 	m_visited_shapes[tshape_ptr] = node.temp_id;
@@ -120,15 +120,10 @@ int64_t OCCTSerializer::serialize_shape_recursive(const TopoDS_Shape& shape)
 		if (child_node_id != -1) {
 			std::string rel_name = "HAS_SUB_SHAPE";
 
-			TopAbs_ShapeEnum child_type = child_shape.ShapeType();
-			switch (child_type) {
-			case TopAbs_SHELL:   rel_name = "HAS_SHELL"; break;
-			case TopAbs_FACE:    rel_name = "HAS_FACE"; break;
-			case TopAbs_WIRE:    rel_name = "HAS_WIRE"; break;
-			case TopAbs_EDGE:    rel_name = "HAS_EDGE"; break;
-			case TopAbs_VERTEX:  rel_name = "HAS_VERTEX"; break;
-			case TopAbs_SOLID:   rel_name = "HAS_SOLID"; break;
-			default: break;
+			const std::string child_type_name = shape_enum_to_string(child_shape.ShapeType());
+			const TypeDescriptor* child_type_desc = m_registry.get_type(child_type_name);
+			if (child_type_desc && !child_type_desc->relationship_name_as_child.empty()) {
+				rel_name = child_type_desc->relationship_name_as_child;
 			}
 
 			IntermediateRelationship rel;
@@ -141,62 +136,6 @@ int64_t OCCTSerializer::serialize_shape_recursive(const TopoDS_Shape& shape)
 	}
 
 	return m_visited_shapes[tshape_ptr];
-}
-
-int64_t OCCTSerializer::serialize_shape_recursive(const TopoDS_Shape& shape)
-{
-	if (shape.IsNull()) {
-		return -1;
-	}
-
-	const TopoDS_TShape* tshape_ptr = shape.TShape().get();
-	if (m_visited_shapes.count(tshape_ptr)) {
-		return m_visited_shapes.at(tshape_ptr);
-	}
-
-	TopAbs_ShapeEnum shape_type_enum = shape.ShapeType();
-	const std::string type_name = shape_enum_to_string(shape_type_enum);
-
-	const TypeDescriptor* type_desc = m_registry.get_type(type_name);
-	if (!type_desc) {
-		if (type_name != "TopoDS_Shape") {
-			std::cerr << "Warning: Type '" << type_name << "' not found in ReflectionRegistry. Skipping shape." << std::endl;
-		}
-	}
-
-	IntermediateNode node;
-	node.temp_id = m_next_temp_id++;
-	node.type_name = type_name;
-	// Èç¹ûÕÒµ½ÁËÃèÊö·û£¬Ê¹ÓÃËüµÄ neo4j_label£¬·ñÔòÊ¹ÓÃÀàÐÍÃû
-	node.neo4j_label = type_desc ? type_desc->neo4j_label : type_name;
-
-	m_visited_shapes[tshape_ptr] = node.temp_id;
-	if (type_desc) {
-		std::any shape_any;
-
-		// È·±£ TopoDS::Xyz() º¯ÊýµÄ½á¹û±»ÕýÈ··ÅÈë shape_any
-		switch (shape_type_enum) {
-		case TopAbs_VERTEX: shape_any = TopoDS::Vertex(shape); break;
-		case TopAbs_EDGE:   shape_any = TopoDS::Edge(shape);   break;
-		case TopAbs_FACE:   shape_any = TopoDS::Face(shape);   break;
-		}
-
-		for (const auto& [prop_name, prop_desc] : type_desc->properties) {
-			if (!prop_desc.is_relationship) {
-				try {
-					std::any prop_value = prop_desc.getter(shape_any);
-					node.properties[prop_name] = covert_simple_type_to_any(prop_value);
-				}
-				catch (const std::bad_any_cast& e) {
-					std::cerr << "Error getting property '" << prop_name << "' for type '" << type_name << "': " << e.what() << std::endl;
-				}
-			}
-			// ÎÒÃÇ½«ÔÚÏÂÒ»²½´¦Àí¹ØÏµ
-		}
-	}
-
-	m_graph.nodes.push_back(std::move(node));
-	return node.temp_id;
 }
 
 void OCCTSerializer::serialize_recursize(const Handle(Standard_Transient)& object) {
@@ -245,23 +184,23 @@ void OCCTSerializer::serialize_recursize(const Handle(Standard_Transient)& objec
 
 std::any OCCTSerializer::covert_simple_type_to_any(const std::any& value) {
 	const auto& type = value.type();
-	// --- ¼òµ¥ C++ ÀàÐÍ ---
+	// --- ï¿½ï¿½ C++ ï¿½ï¿½ï¿½ï¿½ ---
 	if (type == typeid(int) || type == typeid(Standard_Integer)) return std::any_cast<int>(value);
 	if (type == typeid(double) || type == typeid(Standard_Real)) return std::any_cast<double>(value);
 	if (type == typeid(bool) || type == typeid(Standard_Boolean)) return std::any_cast<bool>(value);
 	if (type == typeid(TopAbs_Orientation) || type == typeid(TopAbs_ShapeEnum)) {
-		// Ã¶¾ÙÀàÐÍ¿ÉÒÔ×ª»»ÎªÕûÊý´æ´¢
+		// Ã¶ï¿½ï¿½ï¿½ï¿½ï¿½Í¿ï¿½ï¿½ï¿½×ªï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½æ´¢
 		return static_cast<int>(std::any_cast<int>(value));
 	}
-	// --- OCCT ×Ö·û´®ÀàÐÍ ---
+	// --- OCCT ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ---
 	if (type == typeid(TCollection_AsciiString)) {
 		return std::string(std::any_cast<const TCollection_AsciiString&>(value).ToCString());
 	}
 
-	// --- OCCT ¼¸ºÎÖµÀàÐÍ (×÷Îª¸´ÔÓÊôÐÔ) ---
+	// --- OCCT ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½) ---
 	if (type == typeid(gp_Pnt)) {
 		const auto& p = std::any_cast<const gp_Pnt&>(value);
-		// ½«Æä×ª»»ÎªÒ»¸ö map£¬Õâ¿ÉÒÔºÜÈÝÒ×µØ±»ÐòÁÐ»¯Îª JSON
+		// ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ÎªÒ»ï¿½ï¿½ mapï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôºï¿½ï¿½ï¿½ï¿½×µØ±ï¿½ï¿½ï¿½ï¿½Ð»ï¿½Îª JSON
 		std::unordered_map<std::string, double> pnt_map;
 		pnt_map["x"] = p.X();
 		pnt_map["y"] = p.Y();
