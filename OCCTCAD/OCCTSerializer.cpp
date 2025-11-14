@@ -13,6 +13,10 @@
 #include <TopoDS_CompSolid.hxx>
 #include <TopoDS_Compound.hxx> 
 #include <TopoDS_Iterator.hxx>
+#include <BRep_Tool.hxx>
+#include <Geom_Curve.hxx>
+#include <Geom_Surface.hxx>
+#include <TopLoc_Location.hxx>
 
 std::string shape_enum_to_string(TopAbs_ShapeEnum type) {
 	switch (type) {
@@ -80,8 +84,32 @@ int64_t OCCTSerializer::serialize_shape_recursive(const TopoDS_Shape& shape)
 	node.temp_id = m_next_temp_id++;
 	node.type_name = type_name;
 	node.neo4j_label = type_desc ? type_desc->neo4j_label : type_name;
-
 	m_visited_shapes[tshape_ptr] = node.temp_id;
+
+	//
+	TopLoc_Location location = shape.Location();
+	if (!location.IsIdentity()) {
+		serialize_transient_and_link(location.FirstDatum(), node.temp_id, "HAS_LOCATION");
+	}
+	node.properties["orientation"] = static_cast<int32_t>(shape.Orientation());
+
+	if (shape_type_enum == TopAbs_EDGE) {
+		Standard_Real first, last;
+		Handle(Geom_Curve) curve = BRep_Tool::Curve(TopoDS::Edge(shape), first, last);
+		serialize_transient_and_link(curve, node.temp_id, "GEOMETRY");
+		node.properties["range_first"] = first;
+		node.properties["range_last"] = last;
+	}
+	else if (shape_type_enum == TopAbs_FACE) {
+		Handle(Geom_Surface) surface = BRep_Tool::Surface(TopoDS::Face(shape));
+		serialize_transient_and_link(surface, node.temp_id, "GEOMETRY");
+	}
+	else if (shape_type_enum == TopAbs_VERTEX) {
+		gp_Pnt pnt = BRep_Tool::Pnt(TopoDS::Vertex(shape));
+		// For vertices, the geometry is a simple gp_Pnt, store it as a property
+		node.properties["geometry"] = OCCTValueConverter::to_serializable(std::any(pnt));
+	}
+
 	if (type_desc) {
 		std::any shape_any;
 
@@ -180,4 +208,22 @@ void OCCTSerializer::serialize_recursize(const Handle(Standard_Transient)& objec
 	}
 
 	m_graph.nodes.push_back(std::move(node));
+}
+
+int64_t OCCTSerializer::serialize_transient_and_link(const Handle(Standard_Transient)& object, int64_t from_node_id, const std::string& relationship_name)
+{
+	if (object.IsNull()) {
+		return -1;
+	}
+
+	serialize_recursize(object);
+	const int64_t to_node_id = m_visited_objects.at(object.get());
+
+	IntermediateRelationship rel;
+	rel.from_node_id = from_node_id;
+	rel.to_node_id = to_node_id;
+	rel.relationship_name = relationship_name;
+	m_graph.relationships.push_back(std::move(rel));
+
+	return to_node_id;
 }

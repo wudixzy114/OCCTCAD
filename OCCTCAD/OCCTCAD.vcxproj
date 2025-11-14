@@ -27,6 +27,7 @@
     <ClCompile Include="OCCTSerializer.cpp" />
     <ClCompile Include="OCCTValueConverter.cpp" />
     <ClCompile Include="test\test_value_conversion.cpp" />
+    <ClCompile Include="test_serializer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="OCCTSerializer.h" />

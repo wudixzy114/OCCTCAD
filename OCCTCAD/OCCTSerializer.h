@@ -47,5 +47,11 @@ private:
 	std::unordered_map<const TopoDS_TShape*, int64_t> m_visited_shapes;
 	std::unordered_map<Standard_Transient*, int64_t> m_visited_objects;
 	int64_t m_next_temp_id = 0;
+
+	int64_t serialize_transient_and_link(
+		const Handle(Standard_Transient)& object,
+		int64_t from_node_id,
+		const std::string& relationship_name
+	);
 };
 
