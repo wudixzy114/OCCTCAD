@@ -329,21 +329,28 @@ class ReflectionGenerator:
                     else:
                         # 规则 2: 如果不是 Handle，检查是否是值类型或原生类型
                         try:
-                            var_type_base = declarations.remove_declarated(
+                            var_type_base_decl = declarations.remove_declarated(
                                 declarations.remove_reference(declarations.remove_const(var.decl_type)))
-                            var_type_name_base = getattr(var_type_base, "decl_string",
-                                                         str(var_type_base)).strip().lstrip('::')
 
-                            if var_type_name_base in config.VALUE_TYPES:
-                                print(
-                                    f"DEBUG: '{class_name}::{var_name}' (base type: {var_type_name_base}) -> MATCHED as Value Type.")
-                            elif var_type_name_base in config.PRIMITIVE_TYPES:
-                                print(
-                                    f"DEBUG: '{class_name}::{var_name}' (base type: {var_type_name_base}) -> MATCHED as Primitive Type.")
+                            # 获取最底层的类型，处理指针等情况
+                            if isinstance(var_type_base_decl, declarations.pointer_t):
+                                var_type_base_decl = var_type_base_decl.base
+
+                            var_type_name_base = getattr(var_type_base_decl, "decl_string",
+                                                         str(var_type_base_decl)).strip().lstrip('::')
+
+                            # 如果类型是原生类型或我们定义的值类型，则为属性
+                            if var_type_name_base in config.PRIMITIVE_TYPES or var_type_name_base in config.VALUE_TYPES:
+                                is_rel = False
                             else:
+                                # 否则，它就是一个需要展开的复杂对象，即关系！
+                                is_rel = True
+                                target_type = var_type_name_base.split("::")[-1]
+                                rel_name = f"HAS_{target_type.upper().replace('::', '_')}"
                                 print(
-                                    f"DEBUG: '{class_name}::{var_name}' (base type: {var_type_name_base}) -> NO MATCH. Defaulting to attribute.")
-                            is_rel = False  # 无论是 Value 还是 Primitive 还是 No Match，都不是关系
+                                    f"DEBUG: '{class_name}::{var_name}' (base type: {var_type_name_base}) -> "
+                                    f"HEURISTIC MATCH as complex object relationship."
+                                )
                         except Exception as e_inner:
                             print(
                                 f"DEBUG: Type parsing failed for '{class_name}::{var_name}'. Defaulting to attribute. Error: {e_inner}")

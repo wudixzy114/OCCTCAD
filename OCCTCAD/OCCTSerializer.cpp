@@ -108,7 +108,7 @@ int64_t OCCTSerializer::serialize_shape_recursive(const TopoDS_Shape& shape)
 
 	const int64_t current_node_id = node.temp_id;
 	m_graph.nodes.push_back(std::move(node));
-	
+
 	TopoDS_Iterator it(shape, Standard_True, Standard_False);
 
 	for (; it.More(); it.Next()) {
@@ -154,22 +154,21 @@ void OCCTSerializer::serialize_recursize(const Handle(Standard_Transient)& objec
 	node.neo4j_label = type_desc->neo4j_label;
 
 	m_visited_objects[object.get()] = node.temp_id;
+	const int64_t current_node_id = node.temp_id;
 	std::any obj_any = object;
 
 	// 1. Process reflective properties (attributes and relationships)
 	for (const auto& [prop_name, prop_desc] : type_desc->properties) {
-		std::any prop_value_any = prop_desc.getter(obj_any);
-		if (prop_value_any.type() == typeid(Handle(Standard_Transient))) {
-			const auto& child_handle = std::any_cast<const Handle(Standard_Transient)&>(prop_value_any);
-			if (!child_handle.IsNull()) {
-				this->serialize_recursize(child_handle);
-
-				IntermediateRelationship rel;
-				rel.from_node_id = node.temp_id;
-				rel.to_node_id = m_visited_objects[child_handle.get()];
-				rel.relationship_name = prop_desc.relationship_name;
-				m_graph.relationships.push_back(std::move(rel));
-			}
+		std::any prop_value_any;
+		try {
+			prop_value_any = prop_desc.getter(obj_any);
+		}
+		catch (const std::bad_any_cast& e) {
+			std::cerr << "Error during getter for " << type_name << "::" << prop_name << ": " << e.what() << std::endl;
+			continue; // Skip this property
+		}
+		if (prop_desc.is_relationship) {
+			serialize_and_link_property(prop_value_any, current_node_id, prop_desc);
 		}
 		else
 		{
@@ -201,4 +200,74 @@ int64_t OCCTSerializer::serialize_transient_and_link(const Handle(Standard_Trans
 	m_graph.relationships.push_back(std::move(rel));
 
 	return to_node_id;
+}
+
+void OCCTSerializer::serialize_and_link_property(
+	const std::any& property_value,
+	int64_t from_node_id,
+	const PropertyDescriptor& prop_desc)
+{
+	if (!property_value.has_value()) {
+		return;
+	}
+
+	const auto& type = property_value.type();
+	if (type == typeid(Handle(Standard_Transient))) {
+		const auto& handle = std::any_cast<const Handle(Standard_Transient)&>(property_value);
+		if (handle.IsNull()) {
+			return;
+		}
+
+		// Recursively serialize the target object. If it's already visited, this will do nothing.
+		serialize_recursize(handle);
+
+		// The target object is now guaranteed to be in the visited map.
+		const int64_t to_node_id = m_visited_objects.at(handle.get());
+
+		// *** CREATE THE RELATIONSHIP HERE ***
+		IntermediateRelationship rel;
+		rel.from_node_id = from_node_id;
+		rel.to_node_id = to_node_id;
+		rel.relationship_name = prop_desc.relationship_name; // Use the name from metadata!
+		m_graph.relationships.push_back(std::move(rel));
+
+		return;
+	}
+
+	// --- CASE 2: The related object is a complex value type (e.g., gp_Lin) ---
+	// This object needs its own node in the graph.
+	const TypeDescriptor* value_type_desc = m_registry.get_type(prop_desc.type_name);
+	if (!value_type_desc) {
+		std::cerr << "Warning: Cannot create relationship for property '" << prop_desc.name
+			<< "' because its type '" << prop_desc.type_name << "' is not registered." << std::endl;
+		return;
+	}
+
+	// Since this is a value type, it's not shared and doesn't need a 'visited' check.
+	// We create a new node for it every time.
+	IntermediateNode value_node;
+	value_node.temp_id = m_next_temp_id++;
+	value_node.type_name = value_type_desc->name;
+	value_node.neo4j_label = value_type_desc->neo4j_label;
+
+	// Recursively fill the properties of this new value-node.
+	for (const auto& [sub_prop_name, sub_prop_desc] : value_type_desc->properties) {
+		std::any sub_prop_value = sub_prop_desc.getter(property_value); // Note: getter is called on the 'gp_Lin' any, not a handle
+
+		// Assumption: properties of a complex value type are themselves attributes, not further nested relationships.
+		// This is a reasonable simplification for types like gp_Lin, gp_Ax1 etc.
+		if (!sub_prop_desc.is_relationship) {
+			value_node.properties[sub_prop_name] = OCCTValueConverter::to_serializable(sub_prop_value);
+		}
+	}
+
+	const int64_t to_node_id = value_node.temp_id;
+	m_graph.nodes.push_back(std::move(value_node));
+
+	// *** CREATE THE RELATIONSHIP HERE AS WELL ***
+	IntermediateRelationship rel;
+	rel.from_node_id = from_node_id;
+	rel.to_node_id = to_node_id;
+	rel.relationship_name = prop_desc.relationship_name;
+	m_graph.relationships.push_back(std::move(rel));
 }

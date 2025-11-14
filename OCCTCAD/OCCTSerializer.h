@@ -47,6 +47,12 @@ private:
 
 	void serialize_recursize(const Handle(Standard_Transient)& object);
 
+	void serialize_and_link_property(
+		const std::any& property_value,
+		int64_t from_node_id,
+		const PropertyDescriptor& prop_desc
+	);
+
 	const ReflectionRegistry& m_registry;
 	IntermediateGraph m_graph;
 
