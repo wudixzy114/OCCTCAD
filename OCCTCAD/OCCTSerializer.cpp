@@ -160,12 +160,14 @@ void OCCTSerializer::serialize_recursize(const Handle(Standard_Transient)& objec
 	// =================== DEBUG BLOCK: START ===================
 	std::cout << "\n[DEBUG] Serializing Transient Object: " << type_name << " (Temp ID: " << node.temp_id << ")" << std::endl;
 	// =================== DEBUG BLOCK: END ===================
+	
+	std::any object_ptr_any = static_cast<const Standard_Transient*>(object.get());
 
 	// 1. Process reflective properties (attributes and relationships)
 	for (const auto& [prop_name, prop_desc] : type_desc->properties) {
 		std::any prop_value_any;
 		try {
-			prop_value_any = prop_desc.getter(obj_any);
+			prop_value_any = prop_desc.getter(object_ptr_any);
 		}
 		catch (const std::bad_any_cast& e) {
 			std::cerr << "Error during getter for " << type_name << "::" << prop_name << ": " << e.what() << std::endl;
