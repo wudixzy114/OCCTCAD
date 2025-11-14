@@ -17,6 +17,11 @@ from pygccxml import utils, parser, declarations
 import config
 
 
+def normalize_type_name(name: str) -> str:
+    """Removes leading '::' and trims whitespace."""
+    return name.strip().lstrip(':').strip()
+
+
 def read_header_list():
     """从 class_list.txt 读取头文件列表（去注释、空行，规范化分隔符）。"""
     headers = []
@@ -258,11 +263,13 @@ class ReflectionGenerator:
             if not class_name or '<' in class_name or class_name.startswith('std::'):
                 continue
 
-            custom_reflection_lines.append(f'\n    // --- Registering {class_name} ---')
+            normalized_class_name = normalize_type_name(class_name)
+
+            custom_reflection_lines.append(f'\n    // --- Registering {normalized_class_name} ---')
             custom_reflection_lines.append(f'    {{')
             custom_reflection_lines.append(f'        TypeDescriptor desc;')
-            custom_reflection_lines.append(f'        desc.name = "{class_name}";')
-            custom_reflection_lines.append(f'        desc.neo4j_label = "{class_name}";')
+            custom_reflection_lines.append(f'        desc.name = "{normalized_class_name}";')
+            custom_reflection_lines.append(f'        desc.neo4j_label = "{normalized_class_name}";')
 
             try:
                 for var in cls.variables(allow_empty=True):
@@ -274,8 +281,9 @@ class ReflectionGenerator:
 
                     # 尽可能获取干净的类型名
                     var_type_str_full = var.decl_type.decl_string  # e.g., "const ::gp_XYZ &"
-                    var_type_str_clean = declarations.remove_const(var.decl_type).decl_string.replace(" &",
-                                                                                                      "")  # e.g., "::gp_XYZ"
+                    base_type_for_prop = declarations.remove_alias(
+                        declarations.remove_const(declarations.remove_reference(var.decl_type)))
+                    normalized_prop_type_name = normalize_type_name(base_type_for_prop.decl_string)
 
                     func_suffix = f"{class_name}_{var_name}"
                     getter_name = f"{config.ACCESSOR_CLASS_NAME}::get_{func_suffix}"
@@ -289,7 +297,7 @@ class ReflectionGenerator:
                     custom_reflection_lines.append(f'        {{')
                     custom_reflection_lines.append(f'            PropertyDescriptor prop;')
                     custom_reflection_lines.append(f'            prop.name = "{prop_name}";')
-                    custom_reflection_lines.append(f'            prop.type_name = "{var_type_str_clean}";')
+                    custom_reflection_lines.append(f'            prop.type_name = "{normalized_prop_type_name}";')
 
                     # --- 生成类型擦除的 Getter Lambda ---
                     custom_reflection_lines.append(
@@ -300,12 +308,13 @@ class ReflectionGenerator:
                     custom_reflection_lines.append(f'            }};')
 
                     # --- 生成类型擦除的 Setter Lambda ---
+                    setter_cast_type = normalize_type_name(declarations.remove_const(var.decl_type).decl_string)
                     custom_reflection_lines.append(
                         f'            prop.setter = [] (std::any& obj_any, const std::any& val_any) {{')
                     custom_reflection_lines.append(
                         f'                auto& obj = std::any_cast<{class_name}&>(obj_any);')
                     custom_reflection_lines.append(
-                        f'                const auto& val = std::any_cast<const {var_type_str_clean}&>(val_any);')
+                        f'                const auto& val = std::any_cast<const {setter_cast_type}&>(val_any);')
                     custom_reflection_lines.append(f'                {setter_name}(obj, val);')
                     custom_reflection_lines.append(f'            }};')
 
@@ -336,8 +345,9 @@ class ReflectionGenerator:
                             if isinstance(var_type_base_decl, declarations.pointer_t):
                                 var_type_base_decl = var_type_base_decl.base
 
-                            var_type_name_base = getattr(var_type_base_decl, "decl_string",
-                                                         str(var_type_base_decl)).strip().lstrip('::')
+                            var_type_name_base = normalize_type_name(getattr(var_type_base_decl, "decl_string",
+                                                                             str(var_type_base_decl)).strip().lstrip(
+                                '::'))
 
                             # 如果类型是原生类型或我们定义的值类型，则为属性
                             if var_type_name_base in config.PRIMITIVE_TYPES or var_type_name_base in config.VALUE_TYPES:

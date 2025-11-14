@@ -157,6 +157,10 @@ void OCCTSerializer::serialize_recursize(const Handle(Standard_Transient)& objec
 	const int64_t current_node_id = node.temp_id;
 	std::any obj_any = object;
 
+	// =================== DEBUG BLOCK: START ===================
+	std::cout << "\n[DEBUG] Serializing Transient Object: " << type_name << " (Temp ID: " << node.temp_id << ")" << std::endl;
+	// =================== DEBUG BLOCK: END ===================
+
 	// 1. Process reflective properties (attributes and relationships)
 	for (const auto& [prop_name, prop_desc] : type_desc->properties) {
 		std::any prop_value_any;
@@ -210,6 +214,8 @@ void OCCTSerializer::serialize_and_link_property(
 	if (!property_value.has_value()) {
 		return;
 	}
+
+	std::cout << "     [HELPER] serialize_and_link_property called for relationship '" << prop_desc.relationship_name << "'" << std::endl;
 
 	const auto& type = property_value.type();
 	if (type == typeid(Handle(Standard_Transient))) {

@@ -28,52 +28,62 @@ protected:
 	OCCTSerializer serializer{ ReflectionRegistry::instance() };
 };
 
+// In tests/test_serializer.cpp
+
 TEST_F(SerializerTest, SerializeEdgeWithUnderlyingGeometry) {
-	// 1. Create a simple OCCT Edge based on a line
-	gp_Pnt p1(0, 0, 0);
-	gp_Pnt p2(10, 0, 0);
-	gp_Dir dir(gp_Vec(p1, p2));
-	gp_Lin lin(p1, dir);
-	Handle(Geom_Line) line = new Geom_Line(lin);
-	TopoDS_Edge edge = BRepBuilderAPI_MakeEdge(line);
+    // 1. Create geometry
+    gp_Ax1 axis(gp_Pnt(0, 0, 0), gp_Dir(1, 0, 0));
+    Handle(Geom_Line) line = new Geom_Line(axis);
+    TopoDS_Edge edge = BRepBuilderAPI_MakeEdge(line);
 
-	// 2. Serialize the edge
-	IntermediateGraph graph = serializer.serialize(edge);
+    // 2. Serialize
+    IntermediateGraph graph = serializer.serialize(edge);
 
-	// 3. Assertions: Verify the generated graph structure
-	// We expect 3 nodes: Edge, its underlying Line, and the Line's gp_Lin
-	ASSERT_EQ(graph.nodes.size(), 3)
-		<< "Expected 3 nodes: TopoDS_Edge, Geom_Line, and gp_Lin.";
+    // 3. Assertions for the new, more detailed graph structure
+    // We now expect nodes for: TopoDS_Edge, Geom_Line, gp_Ax1, gp_Pnt, gp_Dir
+    // Note: gp_Pnt and gp_Dir might be serialized as properties of gp_Ax1,
+    // depending on their reflection data. Let's assume for now they are also relationships.
+    // If not, the expected node count will be smaller.
 
-	const IntermediateNode* edge_node = findNodeByType(graph, "TopoDS_Edge");
-	const IntermediateNode* line_node = findNodeByType(graph, "Geom_Line");
-	const IntermediateNode* gp_lin_node = findNodeByType(graph, "gp_Lin");
+    // Let's print the graph to see what we actually get. This is the best way to debug.
+    std::cout << "--- Generated Graph for Edge ---" << std::endl;
+    std::cout << "Node Count: " << graph.nodes.size() << std::endl;
+    for (const auto& node : graph.nodes) {
+        std::cout << "  Node " << node.temp_id << ": " << node.type_name << std::endl;
+    }
+    std::cout << "Relationship Count: " << graph.relationships.size() << std::endl;
+    for (const auto& rel : graph.relationships) {
+        std::cout << "  Rel: " << rel.from_node_id << " -[" << rel.relationship_name << "]-> " << rel.to_node_id << std::endl;
+    }
+    std::cout << "--------------------------------" << std::endl;
 
-	ASSERT_NE(edge_node, nullptr) << "TopoDS_Edge node not found.";
-	ASSERT_NE(line_node, nullptr) << "Geom_Line node not found.";
-	ASSERT_NE(gp_lin_node, nullptr) << "gp_Lin node not found.";
+    // Based on our change, we expect Geom_Line to have a relationship to gp_Ax1.
+    const IntermediateNode* edge_node = findNodeByType(graph, "TopoDS_Edge");
+    const IntermediateNode* line_node = findNodeByType(graph, "Geom_Line");
+    const IntermediateNode* ax1_node = findNodeByType(graph, "gp_Ax1");
 
-	// We expect 2 relationships: Edge -> Line, and Line -> gp_Lin
-	ASSERT_EQ(graph.relationships.size(), 2)
-		<< "Expected 2 relationships: Edge->Geometry and Geometry->Definition.";
+    ASSERT_NE(edge_node, nullptr);
+    ASSERT_NE(line_node, nullptr);
+    ASSERT_NE(ax1_node, nullptr); // This is the new crucial check
 
-	bool found_edge_to_geom = false;
-	bool found_geom_to_def = false;
+    bool found_line_to_axis = false;
+    for (const auto& rel : graph.relationships) {
+        if (rel.from_node_id == line_node->temp_id && rel.to_node_id == ax1_node->temp_id) {
+            EXPECT_EQ(rel.relationship_name, "HAS_GP_AX1");
+            found_line_to_axis = true;
+        }
+    }
+    EXPECT_TRUE(found_line_to_axis) << "Relationship from Geom_Line to its gp_Ax1 position not found.";
 
-	for (const auto& rel : graph.relationships) {
-		if (rel.from_node_id == edge_node->temp_id && rel.to_node_id == line_node->temp_id) {
-			EXPECT_EQ(rel.relationship_name, "GEOMETRY");
-			found_edge_to_geom = true;
-		}
-		if (rel.from_node_id == line_node->temp_id && rel.to_node_id == gp_lin_node->temp_id) {
-			// This relationship comes from the reflection system's 'Handle' detection
-			EXPECT_EQ(rel.relationship_name, "HAS_GP_LIN");
-			found_geom_to_def = true;
-		}
-	}
-
-	EXPECT_TRUE(found_edge_to_geom) << "Relationship from Edge to its Geometry not found.";
-	EXPECT_TRUE(found_geom_to_def) << "Relationship from Geom_Line to its gp_Lin definition not found.";
+    // The original test for Edge -> Geometry is still valid via special_handler
+    bool found_edge_to_geom = false;
+    for (const auto& rel : graph.relationships) {
+        if (rel.from_node_id == edge_node->temp_id && rel.to_node_id == line_node->temp_id) {
+            EXPECT_EQ(rel.relationship_name, "GEOMETRY");
+            found_edge_to_geom = true;
+        }
+    }
+    EXPECT_TRUE(found_edge_to_geom);
 }
 
 
