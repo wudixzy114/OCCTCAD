@@ -101,20 +101,7 @@ int64_t OCCTSerializer::serialize_shape_recursive(const TopoDS_Shape& shape)
 	default:            shape_any = shape; break;
 	}
 
-	// 1. Process standard reflective properties
-	for (const auto& [prop_name, prop_desc] : type_desc->properties) {
-		if (!prop_desc.is_relationship) {
-			try {
-				std::any prop_value = prop_desc.getter(shape_any);
-				node.properties[prop_name] = OCCTValueConverter::to_serializable(prop_value);
-			}
-			catch (const std::bad_any_cast& e) {
-				std::cerr << "Error getting property '" << prop_name << "' for type '" << type_name << "': " << e.what() << std::endl;
-			}
-		}
-	}
-
-	// 2. Call the special handler if it exists
+	// Call the special handler if it exists
 	if (type_desc->special_handler) {
 		type_desc->special_handler(shape_any, *this, node);
 	}

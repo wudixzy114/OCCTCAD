@@ -7,7 +7,7 @@
 
 class gp_Pnt;
 class gp_Lin;
-class IntermediateNode;
+struct IntermediateNode;
 class OCCTSerializer;
 
 using GenericGetter = std::function<std::any(const std::any&)>;

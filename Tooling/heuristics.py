@@ -18,8 +18,15 @@ class HeuristicProcessor:
         返回 (handler_code_string, required_includes_set) 或 (None, None)。
         """
 
-        has_location = self.cls.member_function("Location")
-        has_orientation = self.cls.member_function("Orientation")
+        try:
+            has_location = bool(self.cls.member_functions("Location"))
+        except RuntimeError:
+            has_location = False
+
+        try:
+            has_orientation = bool(self.cls.member_functions("Orientation"))
+        except RuntimeError:
+            has_orientation = False
 
         if has_location and has_orientation:
             self._apply_topods_shape_heuristics()
