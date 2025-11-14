@@ -41,8 +41,6 @@ private:
 
 	void serialize_recursize(const Handle(Standard_Transient)& object);
 
-	std::any covert_simple_type_to_any(const std::any& value);
-
 	const ReflectionRegistry& m_registry;
 	IntermediateGraph m_graph;
 

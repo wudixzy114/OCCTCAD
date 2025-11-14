@@ -25,10 +25,12 @@
     <ClCompile Include="Neo4jAdapter.cpp" />
     <ClCompile Include="Neo4jAdapter.h" />
     <ClCompile Include="OCCTSerializer.cpp" />
+    <ClCompile Include="OCCTValueConverter.cpp" />
     <ClCompile Include="test\test_value_conversion.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="OCCTSerializer.h" />
+    <ClInclude Include="OCCTValueConverter.h" />
     <ClInclude Include="ReflectionAccessor.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

@@ -1,4 +1,5 @@
 #include "OCCTSerializer.h"
+#include "OCCTValueConverter.h"
 #include <TCollection_AsciiString.hxx>
 #include <iostream>
 #include <TopAbs_ShapeEnum.hxx>
@@ -100,7 +101,7 @@ int64_t OCCTSerializer::serialize_shape_recursive(const TopoDS_Shape& shape)
 			if (!prop_desc.is_relationship) {
 				try {
 					std::any prop_value = prop_desc.getter(shape_any);
-					node.properties[prop_name] = covert_simple_type_to_any(prop_value);
+					node.properties[prop_name] = OCCTValueConverter::to_serializable(prop_value);
 				}
 				catch (const std::bad_any_cast& e) {
 					std::cerr << "Error getting property '" << prop_name << "' for type '" << type_name << "': " << e.what() << std::endl;
@@ -174,42 +175,9 @@ void OCCTSerializer::serialize_recursize(const Handle(Standard_Transient)& objec
 		}
 		else
 		{
-			node.properties[prop_name] = covert_simple_type_to_any(prop_value_any);
+			node.properties[prop_name] = OCCTValueConverter::to_serializable(prop_value_any);
 		}
 	}
 
 	m_graph.nodes.push_back(std::move(node));
-}
-
-std::any OCCTSerializer::covert_simple_type_to_any(const std::any& value) {
-	const auto& type = value.type();
-	if (type == typeid(int) || type == typeid(Standard_Integer)) return std::any_cast<int>(value);
-	if (type == typeid(double) || type == typeid(Standard_Real)) return std::any_cast<double>(value);
-	if (type == typeid(bool) || type == typeid(Standard_Boolean)) return std::any_cast<bool>(value);
-	if (type == typeid(TopAbs_Orientation) || type == typeid(TopAbs_ShapeEnum)) {
-		return static_cast<int>(std::any_cast<int>(value));
-	}
-	if (type == typeid(TCollection_AsciiString)) {
-		return std::string(std::any_cast<const TCollection_AsciiString&>(value).ToCString());
-	}
-
-	if (type == typeid(gp_Pnt)) {
-		const auto& p = std::any_cast<const gp_Pnt&>(value);
-		std::unordered_map<std::string, double> pnt_map;
-		pnt_map["x"] = p.X();
-		pnt_map["y"] = p.Y();
-		pnt_map["z"] = p.Z();
-		return pnt_map;
-	}
-	if (type == typeid(gp_XYZ)) {
-		const auto& xyz = std::any_cast<const gp_XYZ&>(value);
-		std::unordered_map<std::string, double> xyz_map;
-		xyz_map["x"] = xyz.X();
-		xyz_map["y"] = xyz.Y();
-		xyz_map["z"] = xyz.Z();
-		return xyz_map;
-	}
-
-	std::cerr << "Warning: Unhandled simple type in convert_simple_type_to_any: " << type.name() << std::endl;
-	return {};
 }
