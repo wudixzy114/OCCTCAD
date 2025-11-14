@@ -22,6 +22,26 @@ TopoDS_Solid.hxx
 TopoDS_CompSolid.hxx
 TopoDS_Compound.hxx
 
+# 3D Curves
+Geom_Curve.hxx
+Geom_Line.hxx
+Geom_Circle.hxx
+Geom_Ellipse.hxx
+Geom_Hyperbola.hxx
+Geom_Parabola.hxx
+Geom_BSplineCurve.hxx
+Geom_BezierCurve.hxx
+
+# Surfaces
+Geom_Surface.hxx
+Geom_Plane.hxx
+Geom_CylindricalSurface.hxx
+Geom_ConicalSurface.hxx
+Geom_SphericalSurface.hxx
+Geom_ToroidalSurface.hxx
+Geom_BSplineSurface.hxx
+Geom_BezierSurface.hxx
+
 # TShape (Underlying Implementation of TopoDS_Shape)
 # We need access to their private members like 'myLocation'
 TopLoc_Location.hxx
