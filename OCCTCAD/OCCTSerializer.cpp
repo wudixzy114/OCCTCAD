@@ -78,6 +78,7 @@ int64_t OCCTSerializer::serialize_shape_recursive(const TopoDS_Shape& shape)
 		if (type_name != "TopoDS_Shape") {
 			std::cerr << "Warning: Type '" << type_name << "' not found in ReflectionRegistry. Skipping shape." << std::endl;
 		}
+		return -1;
 	}
 
 	IntermediateNode node;
@@ -86,61 +87,42 @@ int64_t OCCTSerializer::serialize_shape_recursive(const TopoDS_Shape& shape)
 	node.neo4j_label = type_desc ? type_desc->neo4j_label : type_name;
 	m_visited_shapes[tshape_ptr] = node.temp_id;
 
-	//
-	TopLoc_Location location = shape.Location();
-	if (!location.IsIdentity()) {
-		serialize_transient_and_link(location.FirstDatum(), node.temp_id, "HAS_LOCATION");
-	}
-	node.properties["orientation"] = static_cast<int32_t>(shape.Orientation());
+	std::any shape_any;
 
-	if (shape_type_enum == TopAbs_EDGE) {
-		Standard_Real first, last;
-		Handle(Geom_Curve) curve = BRep_Tool::Curve(TopoDS::Edge(shape), first, last);
-		serialize_transient_and_link(curve, node.temp_id, "GEOMETRY");
-		node.properties["range_first"] = first;
-		node.properties["range_last"] = last;
-	}
-	else if (shape_type_enum == TopAbs_FACE) {
-		Handle(Geom_Surface) surface = BRep_Tool::Surface(TopoDS::Face(shape));
-		serialize_transient_and_link(surface, node.temp_id, "GEOMETRY");
-	}
-	else if (shape_type_enum == TopAbs_VERTEX) {
-		gp_Pnt pnt = BRep_Tool::Pnt(TopoDS::Vertex(shape));
-		// For vertices, the geometry is a simple gp_Pnt, store it as a property
-		node.properties["geometry"] = OCCTValueConverter::to_serializable(std::any(pnt));
+	switch (shape_type_enum) {
+	case TopAbs_VERTEX: shape_any = TopoDS::Vertex(shape); break;
+	case TopAbs_EDGE:   shape_any = TopoDS::Edge(shape);   break;
+	case TopAbs_WIRE:   shape_any = TopoDS::Wire(shape);   break;
+	case TopAbs_FACE:   shape_any = TopoDS::Face(shape);   break;
+	case TopAbs_SHELL:  shape_any = TopoDS::Shell(shape);  break;
+	case TopAbs_SOLID:  shape_any = TopoDS::Solid(shape);  break;
+	case TopAbs_COMPSOLID: shape_any = TopoDS::CompSolid(shape); break;
+	case TopAbs_COMPOUND:  shape_any = TopoDS::Compound(shape);  break;
+	default:            shape_any = shape; break;
 	}
 
-	if (type_desc) {
-		std::any shape_any;
-
-		switch (shape_type_enum) {
-		case TopAbs_VERTEX: shape_any = TopoDS::Vertex(shape); break;
-		case TopAbs_EDGE:   shape_any = TopoDS::Edge(shape);   break;
-		case TopAbs_WIRE:   shape_any = TopoDS::Wire(shape);   break;
-		case TopAbs_FACE:   shape_any = TopoDS::Face(shape);   break;
-		case TopAbs_SHELL:  shape_any = TopoDS::Shell(shape);  break;
-		case TopAbs_SOLID:  shape_any = TopoDS::Solid(shape);  break;
-		case TopAbs_COMPSOLID: shape_any = TopoDS::CompSolid(shape); break;
-		case TopAbs_COMPOUND:  shape_any = TopoDS::Compound(shape);  break;
-		default:            shape_any = shape; break;
-		}
-
-		for (const auto& [prop_name, prop_desc] : type_desc->properties) {
-			if (!prop_desc.is_relationship) {
-				try {
-					std::any prop_value = prop_desc.getter(shape_any);
-					node.properties[prop_name] = OCCTValueConverter::to_serializable(prop_value);
-				}
-				catch (const std::bad_any_cast& e) {
-					std::cerr << "Error getting property '" << prop_name << "' for type '" << type_name << "': " << e.what() << std::endl;
-				}
+	// 1. Process standard reflective properties
+	for (const auto& [prop_name, prop_desc] : type_desc->properties) {
+		if (!prop_desc.is_relationship) {
+			try {
+				std::any prop_value = prop_desc.getter(shape_any);
+				node.properties[prop_name] = OCCTValueConverter::to_serializable(prop_value);
+			}
+			catch (const std::bad_any_cast& e) {
+				std::cerr << "Error getting property '" << prop_name << "' for type '" << type_name << "': " << e.what() << std::endl;
 			}
 		}
 	}
 
+	// 2. Call the special handler if it exists
+	if (type_desc->special_handler) {
+		type_desc->special_handler(shape_any, *this, node);
+	}
+
+	const int64_t current_node_id = node.temp_id;
 	m_graph.nodes.push_back(std::move(node));
 	
-	TopoDS_Iterator it(shape);
+	TopoDS_Iterator it(shape, Standard_True, Standard_False);
 
 	for (; it.More(); it.Next()) {
 		const TopoDS_Shape& child_shape = it.Value();
@@ -155,7 +137,7 @@ int64_t OCCTSerializer::serialize_shape_recursive(const TopoDS_Shape& shape)
 			}
 
 			IntermediateRelationship rel;
-			rel.from_node_id = m_visited_shapes[tshape_ptr];
+			rel.from_node_id = current_node_id;
 			rel.to_node_id = child_node_id;
 			rel.relationship_name = rel_name;
 
@@ -163,7 +145,7 @@ int64_t OCCTSerializer::serialize_shape_recursive(const TopoDS_Shape& shape)
 		}
 	}
 
-	return m_visited_shapes[tshape_ptr];
+	return current_node_id;
 }
 
 void OCCTSerializer::serialize_recursize(const Handle(Standard_Transient)& object) {
@@ -187,6 +169,7 @@ void OCCTSerializer::serialize_recursize(const Handle(Standard_Transient)& objec
 	m_visited_objects[object.get()] = node.temp_id;
 	std::any obj_any = object;
 
+	// 1. Process reflective properties (attributes and relationships)
 	for (const auto& [prop_name, prop_desc] : type_desc->properties) {
 		std::any prop_value_any = prop_desc.getter(obj_any);
 		if (prop_value_any.type() == typeid(Handle(Standard_Transient))) {
@@ -205,6 +188,11 @@ void OCCTSerializer::serialize_recursize(const Handle(Standard_Transient)& objec
 		{
 			node.properties[prop_name] = OCCTValueConverter::to_serializable(prop_value_any);
 		}
+	}
+
+	// 2. Call special handler if it exists
+	if (type_desc->special_handler) {
+		type_desc->special_handler(obj_any, *this, node);
 	}
 
 	m_graph.nodes.push_back(std::move(node));

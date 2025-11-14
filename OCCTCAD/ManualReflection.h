@@ -7,9 +7,12 @@
 
 class gp_Pnt;
 class gp_Lin;
+class IntermediateNode;
+class OCCTSerializer;
 
 using GenericGetter = std::function<std::any(const std::any&)>;
 using GenericSetter = std::function<void (std::any&, const std::any&)> ;
+using SpecialSerizlizerHandler = std::function<void(const std::any&, OCCTSerializer&, IntermediateNode&)>;
 
 // 描述一个 C++ 成员变量（属性），包含其名称 (coord)、类型名 (gp_XYZ)、是否是关系，以及最核心的 GenericGetter 和 GenericSetter。
 struct PropertyDescriptor {
@@ -28,6 +31,7 @@ struct TypeDescriptor {
 	std::string neo4j_label;
 	std::unordered_map<std::string, PropertyDescriptor> properties;
 	std::string relationship_name_as_child;
+	SpecialSerizlizerHandler special_handler = nullptr;
 };
 
 class ReflectionRegistry {
