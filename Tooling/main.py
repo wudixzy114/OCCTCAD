@@ -17,6 +17,30 @@ from pygccxml import utils, parser, declarations
 import config
 
 
+def is_transient(cls_decl: declarations.class_t, memo=None):
+    """
+    通过检查继承链，判断一个类是否派生自 Standard_Transient。
+    使用 memoization 来避免重复计算。
+    """
+    if memo is None:
+        memo = {}
+    if cls_decl in memo:
+        return memo[cls_decl]
+
+    if cls_decl.name == 'Standard_Transient':
+        memo[cls_decl] = True
+        return True
+
+    for base in cls_decl.bases:
+        if hasattr(base, 'related_class') and isinstance(base.related_class, declarations.class_t):
+            if is_transient(base.related_class, memo):
+                memo[cls_decl] = True
+                return True
+
+    memo[cls_decl] = False
+    return False
+
+
 def normalize_type_name(name: str) -> str:
     """Removes leading '::' and trims whitespace."""
     return name.strip().lstrip(':').strip()
@@ -216,6 +240,7 @@ class ReflectionGenerator:
 
         # --- Part 1: Heuristically generate special handlers ---
         for cls in self.classes_to_reflect:
+
             processor = HeuristicProcessor(cls)
             handler_code, includes = processor.generate_handler()
 
@@ -263,6 +288,7 @@ class ReflectionGenerator:
             if not class_name or '<' in class_name or class_name.startswith('std::'):
                 continue
 
+            cls_is_transient = is_transient(cls)
             normalized_class_name = normalize_type_name(class_name)
 
             custom_reflection_lines.append(f'\n    // --- Registering {normalized_class_name} ---')
@@ -302,8 +328,17 @@ class ReflectionGenerator:
                     # --- 生成类型擦除的 Getter Lambda ---
                     custom_reflection_lines.append(
                         f'            prop.getter = [] (const std::any& obj_any) -> std::any {{')
-                    custom_reflection_lines.append(
-                        f'                const auto& obj = std::any_cast<const {class_name}&>(obj_any);')
+                    if cls_is_transient:
+                        # For transient types, expect a base pointer (Standard_Transient*) in the 'any'.
+                        custom_reflection_lines.append(
+                            f'                const auto* base_ptr = std::any_cast<const Standard_Transient*>(obj_any);')
+                        # The getter is responsible for the safe downcast.
+                        custom_reflection_lines.append(
+                            f'                const auto& obj = static_cast<const {class_name}&>(*base_ptr);')
+                    else:
+                        # For value types, expect the object itself.
+                        custom_reflection_lines.append(
+                            f'                const auto& obj = std::any_cast<const {class_name}&>(obj_any);')
                     custom_reflection_lines.append(f'                return std::any({getter_name}(obj));')
                     custom_reflection_lines.append(f'            }};')
 
@@ -311,8 +346,14 @@ class ReflectionGenerator:
                     setter_cast_type = normalize_type_name(declarations.remove_const(var.decl_type).decl_string)
                     custom_reflection_lines.append(
                         f'            prop.setter = [] (std::any& obj_any, const std::any& val_any) {{')
-                    custom_reflection_lines.append(
-                        f'                auto& obj = std::any_cast<{class_name}&>(obj_any);')
+                    if cls_is_transient:
+                        custom_reflection_lines.append(
+                            f'                auto* base_ptr = std::any_cast<Standard_Transient*>(obj_any);')
+                        custom_reflection_lines.append(
+                            f'                auto& obj = static_cast<{class_name}&>(*base_ptr);')
+                    else:
+                        custom_reflection_lines.append(
+                            f'                auto& obj = std::any_cast<{class_name}&>(obj_any);')
                     custom_reflection_lines.append(
                         f'                const auto& val = std::any_cast<const {setter_cast_type}&>(val_any);')
                     custom_reflection_lines.append(f'                {setter_name}(obj, val);')

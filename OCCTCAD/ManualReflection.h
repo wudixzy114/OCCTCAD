@@ -32,6 +32,7 @@ struct TypeDescriptor {
 	std::unordered_map<std::string, PropertyDescriptor> properties;
 	std::string relationship_name_as_child;
 	SpecialSerizlizerHandler special_handler = nullptr;
+	bool is_transient = false;
 };
 
 class ReflectionRegistry {
