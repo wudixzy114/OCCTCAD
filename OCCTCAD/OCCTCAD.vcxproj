@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\external\base64\base64.cpp" />
     <ClCompile Include="GeneratedReflection.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ManualReflection.h" />
@@ -27,12 +28,18 @@
     <ClCompile Include="OCCTSerializer.cpp" />
     <ClCompile Include="OCCTValueConverter.cpp" />
     <ClCompile Include="test\test_value_conversion.cpp" />
+    <ClCompile Include="test_integration.cpp" />
+    <ClCompile Include="test_neo4j_adapter.cpp" />
     <ClCompile Include="test_serializer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\external\base64\base64.h" />
     <ClInclude Include="OCCTSerializer.h" />
     <ClInclude Include="OCCTValueConverter.h" />
     <ClInclude Include="ReflectionAccessor.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="docker\docker-compose.yml" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>18.0</VCProjectVersion>
@@ -128,7 +135,7 @@
       <PreprocessorDefinitions>_VARIADIC_MAX=10;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp23</LanguageStandard>
-      <AdditionalIncludeDirectories>D:\OCCTCAD\MirroredHeaders;D:\OCCT\opencascade-7.9.2-vc14-64\inc;$(SolutionDir)external\googletest\build\install\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\OCCTCAD\MirroredHeaders;D:\OCCT\opencascade-7.9.2-vc14-64\inc;$(SolutionDir)external\googletest\build\install\include;$(SolutionDir)external\base64;$(SolutionDir)external\json\single_include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -160,7 +167,7 @@ FOR /D %%G IN ("D:\OCCT\3rdparty-vc14-64\*") DO (
       <PreprocessorDefinitions>_VARIADIC_MAX=10;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>D:\OCCTCAD\MirroredHeaders;D:\OCCT\opencascade-7.9.2-vc14-64\inc;$(SolutionDir)external\googletest\build\install\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\OCCTCAD\MirroredHeaders;D:\OCCT\opencascade-7.9.2-vc14-64\inc;$(SolutionDir)external\googletest\build\install\include;$(SolutionDir)external\base64;$(SolutionDir)external\json\single_include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

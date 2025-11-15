@@ -33,6 +33,24 @@
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="OCCTValueConverter.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="test\test_value_conversion.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="test_serializer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="test_neo4j_adapter.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="test_integration.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\base64\base64.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ReflectionAccessor.h">
@@ -41,5 +59,16 @@
     <ClInclude Include="OCCTSerializer.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="OCCTValueConverter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\base64\base64.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="docker\docker-compose.yml">
+      <Filter>资源文件</Filter>
+    </None>
   </ItemGroup>
 </Project>
