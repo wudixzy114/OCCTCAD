@@ -3,6 +3,7 @@
 #include "Neo4jAdapter.h"
 #include <BRepPrimAPI_MakeBox.hxx>
 #include <cpr/cpr.h> // For direct DB interaction in test
+#include <base64.h>
 
 class Neo4jIntegrationTest : public ::testing::Test {
 protected:
@@ -21,8 +22,20 @@ protected:
 			{"statements", {{{"statement", "MATCH (n) DETACH DELETE n"}}}}
 		};
 		cpr::Post(cpr::Url{ "http://localhost:7474/db/neo4j/tx/commit" },
-			cpr::Header{ {"Authorization", "Basic bmVvNGo6cGFzc3dvcmQ="} },
+			auth_header,
 			cpr::Body{ payload.dump() });
+	}
+
+	Neo4jAdapter::Config cfg;
+	cpr::Header auth_header;
+
+	Neo4jIntegrationTest() {
+		// Initialize reusable components in the constructor
+		std::string auth_string = cfg.username + ":" + cfg.password;
+		auth_header = cpr::Header{
+			{"Authorization", "Basic " + base64_encode(auth_string)},
+			{"Content-Type", "application/json"}
+		};
 	}
 
 	OCCTSerializer serializer{ ReflectionRegistry::instance() };
@@ -48,11 +61,7 @@ TEST_F(Neo4jIntegrationTest, SaveBoxToNeo4j) {
 	};
 
 	auto r = cpr::Post(cpr::Url{ "http://localhost:7474/db/neo4j/tx/commit" },
-		cpr::Header{
-						  {"Authorization", "Basic bmVvNGo6cGFzc3dvcmQ="},
-						  // --- FIX HERE: ADD THE CONTENT-TYPE HEADER ---
-						  {"Content-Type", "application/json"}
-		},
+		auth_header,
 		cpr::Body{ query_payload.dump() });
 
 	ASSERT_EQ(r.status_code, 200);
